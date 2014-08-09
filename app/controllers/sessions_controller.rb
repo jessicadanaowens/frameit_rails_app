@@ -5,9 +5,15 @@ class SessionsController < ApplicationController
   end
 
   def create
+    session_params = params[:session]
+    user = User.authenticate(session_params[:email], session_params[:password])
 
-    redirect_to root_path
+    if user
+      session[:user_id] = user.id
+      redirect_to root_path
+    else
+      redirect_to sign_in_path, flash: { error: "Incorrect email or password" }
+    end
+
   end
-
-
 end

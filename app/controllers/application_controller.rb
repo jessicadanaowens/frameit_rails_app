@@ -4,8 +4,14 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   def signed_in?
-    false
+    current_user.present?
   end
 
-  helper_method :signed_in?
+  def current_user
+    if session[:user_id]
+      User.find_by(id: session[:user_id])
+    end
+  end
+
+  helper_method :current_user, :signed_in?
 end
