@@ -30,6 +30,16 @@ feature 'Visitor signs in' do
     expect(page).not_to have_content("Sign Out")
   end
 
+  scenario 'can sign out' do
+    create_user
+    sign_in_with(email: "jessica@gmail.com", password: "12345")
+
+    click_on "Sign Out"
+
+    expect(page).to have_content("Sign In")
+    expect(page).not_to have_content("Sign Out")
+  end
+
   def create_user
     User.create!(
       :email => "jessica@gmail.com",
