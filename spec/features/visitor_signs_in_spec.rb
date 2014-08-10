@@ -20,7 +20,7 @@ feature 'Visitor signs in' do
     expect(page).not_to have_content("Sign Out")
   end
 
-  scenario 'with invalid password' do
+  scenario 'with invalid username' do
     create_user
 
     sign_in_with(email: "hello@hacker.com", password: "12345")

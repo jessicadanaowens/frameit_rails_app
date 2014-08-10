@@ -7,6 +7,7 @@ class UsersController < ApplicationController
 
     @user = User.new(allowed_parameters)
     if @user.save
+      session[:user_id] = @user.id
       redirect_to root_url, :notice => "Signed up!"
     else
       render "new"

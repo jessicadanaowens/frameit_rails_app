@@ -14,7 +14,6 @@ class SessionsController < ApplicationController
     else
       redirect_to sign_in_path, flash: { error: "Incorrect email or password" }
     end
-
   end
 
   def delete
