@@ -3,7 +3,8 @@ Rails.application.routes.draw do
   get "sign_in" => "sessions#new", :as => "sign_in"
   post "sign_in" => "sessions#create"
   delete "sign_out" => "sessions#delete"
-  root :to => "users#new"
+  # root :to => "users#new"
+  root to: 'pictures#index'
   resources :users
 
 
