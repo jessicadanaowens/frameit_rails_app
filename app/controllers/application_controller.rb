@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   def signed_in?
-    current_user.present?
+    current_user.present? || guest_user.present?
   end
 
   def current_user
@@ -13,5 +13,13 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  helper_method :current_user, :signed_in?
+  def guest_user
+    if session[:guest_user_id]
+      User.find_by(id: session[:guest_user_id])
+    end
+  end
+
+
+
+  helper_method :current_user, :signed_in?, :guest_user
 end

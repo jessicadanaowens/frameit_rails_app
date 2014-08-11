@@ -1,6 +1,16 @@
 <% if signed_in? %>
-  <%= link_to "Sign Out", sign_out_path, method: :delete %>
+  <% if guest_user %>
+    Signed in as guest
+    <%= link_to "Become a member", sign_up_path %>
+    <%= link_to "Sign In", sign_in_path %>
+  <% else %>
+    Signed in as <%=current_user.email %>
+    <%= link_to "Sign Out", sign_out_path, method: :delete %>
+  <% end %>
 <% else %>
   <%= link_to "Sign Up", sign_up_path %>
   <%= link_to "Sign In", sign_in_path %>
 <% end %>
+
+
+

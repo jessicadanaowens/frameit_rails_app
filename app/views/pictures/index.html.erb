@@ -1,1 +1,5 @@
 <h1>hello world</h1>
+
+<% unless current_user %>
+  <p><%= button_to "Try it for free!", create_guest_path, method: :post %></p>
+<% end %>

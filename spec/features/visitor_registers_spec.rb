@@ -5,7 +5,6 @@ feature 'visitor registers' do
 
     register(email: "blake@gmail.com", password: "12345")
 
-    expect(page).to have_content("Sign Out")
     expect(page).not_to have_content("Sign In")
 
     within "header" do

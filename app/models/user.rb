@@ -3,9 +3,9 @@ class User < ActiveRecord::Base
   before_save :encrypt_password
 
   validates_confirmation_of :password
-  validates_presence_of :password, :on => :create
-  validates_presence_of :email
-  validates_uniqueness_of :email
+  validates_presence_of :password, :on => :create, unless: :guest?
+  validates_presence_of :email, unless: :guest?
+  validates_uniqueness_of :email, unless: :guest?
 
   def encrypt_password
     if password.present?
@@ -26,4 +26,9 @@ class User < ActiveRecord::Base
       user
     end
   end
+
+  def self.new_guest
+    new { |u| u.guest = true }
+  end
+
 end
