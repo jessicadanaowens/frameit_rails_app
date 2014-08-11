@@ -26,9 +26,9 @@ class UsersController < ApplicationController
         :guest => true)
       u.save!(:validate => false)
       session[:guest_user_id] = u.id
-      redirect_to root_url
     end
 
+    redirect_to root_url
 
   end
 
