@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   # root :to => "users#new"
   root to: 'pictures#index'
   resources :users
-  resources :picture_uploader
+  resources :pictures
 
 
 end
