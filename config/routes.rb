@@ -5,10 +5,11 @@ Rails.application.routes.draw do
   post "sign_in" => "sessions#create"
   delete "sign_out" => "sessions#delete"
 
-  # root :to => "users#new"
-  root to: 'pictures#index'
+
+  root to: 'home#index'
   resources :users
   resources :pictures
+
 
 
 end

@@ -4,9 +4,8 @@ feature "User can upload a photo" do
   scenario "succesfully" do
     visit root_url
 
-    click_on "Try it for free"
+    click_on "Upload a picture to frame"
 
-    expect(page).to have_button "Upload a picture to frame"
 
     attach_file('picture_image', 'spec/photos/frame.png')
     click_button "Upload a picture to frame"

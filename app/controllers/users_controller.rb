@@ -28,7 +28,7 @@ class UsersController < ApplicationController
       session[:guest_user_id] = u.id
     end
 
-    redirect_to root_url
+    redirect_to new_picture_path
 
   end
 
