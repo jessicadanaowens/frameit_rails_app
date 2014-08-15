@@ -1,7 +1,7 @@
 <h1>hello world</h1>
 
 <% if current_user %>
-  <p><%= button_to "Upload a picture to frame", new_picture_path, method: :get, class:"btn btn-primary" %></p>
+  <p><%= link_to "Upload a picture to frame", pictures_path, class:"btn btn-primary" %></p>
   <% else %>
   <p><%= button_to "Upload a picture to frame", create_guest_path, method: :post, class:"btn btn-primary" %></p>
 <% end %>

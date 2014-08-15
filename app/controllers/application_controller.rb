@@ -10,7 +10,10 @@ class ApplicationController < ActionController::Base
   def current_user
     if session[:user_id]
       User.find_by(id: session[:user_id])
+    else
+      User.find_by(id: session[:guest_user_id])
     end
+
   end
 
   def guest_user

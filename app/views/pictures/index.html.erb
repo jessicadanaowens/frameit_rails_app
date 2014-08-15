@@ -1,0 +1,29 @@
+<%= form_for @picture, :html => {:multipart => true} do |f| %>
+  <%= f.hidden_field :user_id %>
+  <p>
+  <%= f.label :file_name %>
+  <%= f.text_field :file_name %>
+  </p>
+  <p>
+  <%= f.file_field :avatar %>
+  </p>
+  <%= f.submit "Upload a picture to frame" %>
+<% end %>
+
+
+
+<div id="container">
+  <% current_user.pictures.each do |picture| %>
+    <div class="picture">
+      <%= image_tag picture.avatar.url %>
+      <div class="name"><%= picture.file_name %></div>
+
+
+    </div>
+  <% end %>
+  <div class="clear"></div>
+</div>
+
+
+
+
