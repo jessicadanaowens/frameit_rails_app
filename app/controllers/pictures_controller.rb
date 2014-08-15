@@ -9,7 +9,7 @@ class PicturesController < ApplicationController
   def create
     # file_name = params['picture']['image'].original_filename.gsub(" ", "_")
     # url = params['picture']['image'].tempfile.to_s
-    if current_user
+    if session[:user_id]
       user_id = session[:user_id]
     else
       user_id = session[:guest_user_id]

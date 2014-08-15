@@ -12,13 +12,11 @@
 
 
 
-<div id="container">
+<div class="unframed_pictures_gallery">
   <% current_user.pictures.each do |picture| %>
     <div class="picture">
       <%= image_tag picture.avatar.url %>
-      <div class="name"><%= picture.file_name %></div>
-
-
+      <div class="picture_description"><%= picture.file_name %></div>
     </div>
   <% end %>
   <div class="clear"></div>
