@@ -2,12 +2,9 @@ class PicturesController < ApplicationController
 
   def index
     @picture = Picture.new
-    # @user = User.index
   end
 
-
   def create
-
     if session[:user_id]
       user_id = session[:user_id]
     else
@@ -16,7 +13,7 @@ class PicturesController < ApplicationController
 
     @upload = Picture.new(
       :file_name=>params[:picture][:file_name],
-      :avatar => params[:picture][:avatar],
+      :image => params[:picture][:image],
       :user_id=>user_id
     )
 
@@ -34,7 +31,6 @@ class PicturesController < ApplicationController
     @picture.destroy
 
     redirect_to pictures_path
-
   end
 
   def edit
@@ -52,13 +48,11 @@ class PicturesController < ApplicationController
     @picture = Picture.find(params[:id])
     @picture.update(
       :file_name=>params[:picture][:file_name],
-      :avatar => params[:picture][:avatar],
+      :image => params[:picture][:image],
       :user_id=>user_id
     )
     redirect_to pictures_path
   end
-
-
 
   private
 

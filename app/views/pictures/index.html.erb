@@ -5,17 +5,15 @@
   <%= f.text_field :file_name %>
   </p>
   <p>
-  <%= f.file_field :avatar %>
+  <%= f.file_field :image %>
   </p>
   <%= f.submit "Upload a picture to frame" %>
 <% end %>
 
-
-
 <div class="unframed_pictures_gallery">
   <% current_user.pictures.each do |picture| %>
     <div class="picture">
-      <%= image_tag picture.avatar.url %>
+      <%= image_tag picture.image.url %>
       <div class="picture_description"><%= picture.file_name %></div>
       <div class="actions">
         <%= link_to "edit", edit_picture_path(picture) %>
