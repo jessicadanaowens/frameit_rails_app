@@ -17,6 +17,9 @@
     <div class="picture">
       <%= image_tag picture.avatar.url %>
       <div class="picture_description"><%= picture.file_name %></div>
+      <div class="actions">
+        <%= link_to "remove", picture, :confirm => 'Are you sure?', :method => :delete %>
+      </div>
     </div>
   <% end %>
   <div class="clear"></div>

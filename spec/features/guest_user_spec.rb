@@ -6,7 +6,7 @@ feature "user can enter site as a guest" do
 
     click_button("Upload a picture to frame")
     expect(page).to have_content("Signed in as guest")
-    expect(page).to have_content("Become a member")
+    expect(page).to have_content("Sign In")
 
   end
 end

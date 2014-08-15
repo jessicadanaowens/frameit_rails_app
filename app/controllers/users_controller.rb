@@ -1,17 +1,23 @@
 class UsersController < ApplicationController
   def new
+    @source = params[:source] if params[:source]
     @user = User.new
   end
 
   def create
-
     @user = allowed_parameters ? User.new(allowed_parameters) : User.new_guest
 
     if @user.save
       session.clear
       session[:user_id] = @user.id
 
-      redirect_to root_url
+      if params[:source] == "guest_upload"
+        redirect_to pictures_path
+      else
+        redirect_to root_url
+      end
+
+
     else
       render "new"
     end
@@ -35,7 +41,7 @@ class UsersController < ApplicationController
   private
 
   def allowed_parameters
-      params.require(:user).permit(:email, :password, :confirmation)
+    params.require(:user).permit(:email, :password, :confirmation)
   end
 
 end

@@ -13,8 +13,23 @@ feature 'visitor registers' do
 
   end
 
+  scenario 'click register from pictures page' do
+    visit root_path
+    click_button "Upload a picture to frame"
+    click_on "Sign Up"
+
+    within ".sign-up-form" do
+      fill_in "Email", :with => "blake@gmail.com"
+      fill_in "Password", :with => "12345"
+      fill_in "Password confirmation", :with => "12345"
+      click_on "Register"
+    end
+
+    expect(page.current_path).to eq pictures_path
+  end
+
     def register (email:, password:)
-      visit sign_up_path
+      visit root_path
       click_on "Sign Up"
 
       within ".sign-up-form" do
@@ -24,4 +39,6 @@ feature 'visitor registers' do
         click_on "Register"
       end
     end
+
+
 end
