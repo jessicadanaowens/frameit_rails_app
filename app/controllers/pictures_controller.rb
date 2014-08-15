@@ -7,8 +7,7 @@ class PicturesController < ApplicationController
 
 
   def create
-    # file_name = params['picture']['image'].original_filename.gsub(" ", "_")
-    # url = params['picture']['image'].tempfile.to_s
+
     if session[:user_id]
       user_id = session[:user_id]
     else
@@ -37,6 +36,29 @@ class PicturesController < ApplicationController
     redirect_to pictures_path
 
   end
+
+  def edit
+    @picture = Picture.find(params[:id])
+  end
+
+  def update
+
+    if session[:user_id]
+      user_id = session[:user_id]
+    else
+      user_id = session[:guest_user_id]
+    end
+
+    @picture = Picture.find(params[:id])
+    @picture.update(
+      :file_name=>params[:picture][:file_name],
+      :avatar => params[:picture][:avatar],
+      :user_id=>user_id
+    )
+    redirect_to pictures_path
+  end
+
+
 
   private
 

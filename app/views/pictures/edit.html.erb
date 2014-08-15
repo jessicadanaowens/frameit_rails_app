@@ -1,0 +1,12 @@
+
+<%= form_for @picture, :html => {:multipart => true} do |f| %>
+  <%= f.hidden_field :user_id %>
+  <p>
+    <%= f.label :file_name %>
+    <%= f.text_field :file_name %>
+  </p>
+  <p>
+    <%= f.file_field :avatar %>
+  </p>
+  <%= f.submit "Update Picture" %>
+<% end %>

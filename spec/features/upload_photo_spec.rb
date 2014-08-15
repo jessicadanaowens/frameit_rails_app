@@ -13,6 +13,19 @@ feature "User can upload a photo" do
 
   end
 
+  scenario "User can edit a photo" do
+
+    upload_picture
+    click_on "edit"
+
+    fill_in "picture_file_name", :with => "a different description"
+    click_button "Update Picture"
+
+    expect(page).to have_content "a different description"
+
+
+  end
+
   def upload_picture
     visit root_url
 
@@ -23,10 +36,6 @@ feature "User can upload a photo" do
     click_button "Upload a picture to frame"
 
     expect(page).to have_content "description"
-  end
-
-  def edit
-
   end
 
 end
