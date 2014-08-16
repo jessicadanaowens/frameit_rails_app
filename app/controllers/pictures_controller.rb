@@ -5,6 +5,9 @@ class PicturesController < ApplicationController
   end
 
   def create
+
+    @picture = Picture.new
+
     if session[:user_id]
       user_id = session[:user_id]
     else
@@ -19,9 +22,10 @@ class PicturesController < ApplicationController
 
     if @upload.save
       flash[:notice] = "Picture successfully uploaded"
-      redirect_to pictures_path
+      redirect_to "/pictures"
     else
-      render pictures_path
+      flash[:notice] = "Please select a picture to upload"
+      redirect_to "/pictures"
     end
 
   end

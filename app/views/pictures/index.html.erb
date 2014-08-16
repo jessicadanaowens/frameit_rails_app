@@ -1,11 +1,22 @@
 <%= form_for @picture, :html => {:multipart => true} do |f| %>
+
+  <% if @picture.errors.any? %>
+    <div class="error_messages">
+      <ul>
+        <% for message in @picture.errors.full_messages %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
   <%= f.hidden_field :user_id %>
   <p>
   <%= f.label :file_name %>
   <%= f.text_field :file_name %>
   </p>
   <p>
-  <%= f.file_field :image %>
+  <%= f.file_field :image %> 
   </p>
   <%= f.submit "Upload a picture to frame" %>
 <% end %>
