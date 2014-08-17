@@ -1,49 +1,62 @@
-<%= form_for @picture, :html => {:multipart => true} do |f| %>
+<div class="picture-form">
+  <%= form_for @picture, :html => {:multipart => true} do |f| %>
 
-  <% if @picture.errors.any? %>
-    <div class="error_messages">
-      <ul>
-        <% for message in @picture.errors.full_messages %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
+    <% if @picture.errors.any? %>
+      <div class="error_messages">
+        <ul>
+          <% for message in @picture.errors.full_messages %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <%= f.hidden_field :user_id %>
+    <p>
+      <%= f.label :file_name %>
+      <%= f.text_field :file_name %>
+    </p>
+
+    <p>
+      <%= f.file_field :image %>
+    </p>
+    <%= f.submit "Upload a picture to frame" %>
   <% end %>
+</div>
 
-  <%= f.hidden_field :user_id %>
-  <p>
-  <%= f.label :file_name %>
-  <%= f.text_field :file_name %>
-  </p>
-  <p>
-  <%= f.file_field :image %>
-  </p>
-  <%= f.submit "Upload a picture to frame" %>
-<% end %>
+<ul class="accordion-tabs">
+  <li class="tab-header-and-content">
+    <a href="#" class="is-active tab-link">Unframed Pictures</a>
 
-<div class="unframed_pictures_gallery">
-  <% current_user.pictures.each do |picture| %>
-    <div class="cards">
-      <div class="card">
-        <div class="card-image">
-          <img src="<%= picture.image.url %>" alt="">
-        </div>
-        <div class="card-header">
-          <%= picture.file_name %>
-        </div>
+    <div class="tab-content">
 
-        <div class="card-stats">
-          <ul>
-            <li><span><%= link_to "edit", edit_picture_path(picture) %></span></li>
-            <li><span><%= link_to "remove", picture, :confirm => 'Are you sure?', :method => :delete %></span></li>
-            <li><span><%= link_to "select", picture_path(picture) %></span></li>
-          </ul>
-        </div>
+      <div class="unframed_pictures_gallery">
+        <% current_user.pictures.each do |picture| %>
+          <div class="cards">
+            <div class="card">
+              <div class="card-image">
+                <img src="<%= picture.image.url %>" alt="">
+              </div>
+              <div class="card-header">
+                <%= picture.file_name %>
+              </div>
+
+              <div class="card-stats">
+                <ul>
+                  <li><span><%= link_to "edit", edit_picture_path(picture) %></span></li>
+                  <li><span><%= link_to "remove", picture, :confirm => 'Are you sure?', :method => :delete %></span>
+                  </li>
+                  <li><span><%= link_to "select", picture_path(picture) %></span></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+        <% end %>
+        <div class="clear"></div>
       </div>
     </div>
-
-  <% end %>
-  <div class="clear"></div>
-</div>
+  </li>
+</ul>
 
 
