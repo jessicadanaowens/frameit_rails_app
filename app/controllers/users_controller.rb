@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = allowed_parameters ? User.new(allowed_parameters) : User.new_guest
+    @user = User.new(allowed_parameters)
 
     if @user.save
       session.clear

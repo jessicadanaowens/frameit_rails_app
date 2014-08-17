@@ -24,7 +24,6 @@ feature 'Visitor signs in' do
     create_user
 
     sign_in_with(email: "hello@hacker.com", password: "12345")
-
     expect(page).to have_content("Incorrect email or password")
     expect(page).to have_content("Sign In")
     expect(page).not_to have_content("Sign Out")

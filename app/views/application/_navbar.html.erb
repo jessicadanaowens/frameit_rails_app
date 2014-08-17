@@ -1,13 +1,29 @@
-<% if signed_in? %>
-  <% if guest_user %>
-    Signed in as guest
-    <%= link_to "Sign Up", sign_up_path("guest_upload") %>
-    <%= link_to "Sign In", sign_in_path %>
-  <% else %>
-    Signed in as <%=current_user.email %>
-    <%= link_to "Sign Out", sign_out_path, method: :delete %>
-  <% end %>
-<% else %>
-  <%= link_to "Sign Up", sign_up_path("nil") %>
-  <%= link_to "Sign In", sign_in_path %>
-<% end %>
+<header class="navigation">
+  <div class="navigation-wrapper">
+    <a href="javascript:void(0)" class="logo">
+      <img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_logo_1.png" alt="">
+    </a>
+    <a href="" class="navigation-menu-button" id="js-mobile-menu">MENU</a>
+    <div class="nav">
+      <ul id="navigation-menu">
+        <% if signed_in? %>
+          <% if guest_user %>
+            <li class="nav-link">Signed in as guest</li>
+            <li class="nav-link"><%= link_to "Sign Up", sign_up_path("guest_upload") %></li>
+            <li class="nav-link"><%= link_to "Sign In", sign_in_path %></li>
+          <% else %>
+            <li class="nav-link">Signed in as <%=current_user.email %></li>
+            <li class="nav-link"><%= link_to "Sign Out", sign_out_path, method: :delete %></li>
+          <% end %>
+        <% else %>
+          <li class="nav-link"><%= link_to "Sign Up", sign_up_path("nil") %></li>
+          <li class="nav-link"><%= link_to "Sign In", sign_in_path %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</header>
+
+
+
+

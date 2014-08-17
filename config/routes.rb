@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   post "sign_in" => "sessions#create"
   delete "sign_out" => "sessions#delete"
   post "/users/:source" => "users#create"
+  post "/users" => "users#create"
 
   root to: 'home#index'
   resources :users, except: :create

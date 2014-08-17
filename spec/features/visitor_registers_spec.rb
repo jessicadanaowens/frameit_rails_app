@@ -13,6 +13,24 @@ feature 'visitor registers' do
 
   end
 
+  scenario 'unsuccessfully' do
+    register(email: "", password: "12345")
+    expect(page).to have_content("Email can't be blank")
+
+    register(email: "blake@gmail.com", password: "")
+    expect(page).to have_content("Password can't be blank")
+
+    click_on "Register"
+    expect(page).to have_content("Password can't be blank")
+
+    register(email: "blake@gmail.com", password: "12345")
+    click_on "Sign Out"
+    click_on "Sign Up"
+    register(email: "blake@gmail.com", password: "12345")
+    expect(page).to have_content("Email has already been taken")
+
+  end
+
   scenario 'click register from pictures page' do
     visit root_path
     click_button "Upload a picture to frame"
