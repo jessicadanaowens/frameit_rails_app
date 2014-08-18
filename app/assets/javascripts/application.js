@@ -39,7 +39,7 @@ $(document).ready(function() {
     $(".nav .more").removeClass("active-nav-item");
   });
 
-
+  //accordion
 
   $('.accordion-tabs').each(function(index) {
     $(this).children('li').first().children('a').addClass('is-active').next().addClass('is-open').show();

@@ -1,29 +1,32 @@
+<section class="sign-up-form">
+  <article class="sign-up-form">
+    <h1>Sign Up</h1>
+    <%= form_for @user, url: "/users/#{@source}" do |f| %>
+      <% if @user.errors.any? %>
+        <div class="error_messages">
+          <ul>
+            <% for message in @user.errors.full_messages %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+      <p>
+        <%= f.label :email %><br/>
+        <%= f.text_field :email %>
+      </p>
 
-<div class="sign-up-form">
-  <h1>Sign Up</h1>
-  <%= form_for @user, url: "/users/#{@source}" do |f| %>
-  <% if @user.errors.any? %>
-    <div class="error_messages">
-      <ul>
-        <% for message in @user.errors.full_messages %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-  <p>
-    <%= f.label :email %><br />
-    <%= f.text_field :email %>
-  </p>
-  <p>
-    <%= f.label :password %><br />
-    <%= f.password_field :password %>
-  </p>
-  <p>
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation %>
-  </p>
+      <p>
+        <%= f.label :password %><br/>
+        <%= f.password_field :password %>
+      </p>
 
-  <p class="button"><%= f.submit "Register"%></p>
-<% end %>
-</div>
+      <p>
+        <%= f.label :password_confirmation %><br/>
+        <%= f.password_field :password_confirmation %>
+      </p>
+
+      <p class="button"><%= f.submit "Register" %></p>
+    <% end %>
+  </article>
+</section>

@@ -5,14 +5,27 @@
 @import "base/base";
 @import "navbar";
 @import "accordian";
+@import "picture_form";
+@import "cards";
+@import "home_index";
+@import "work_table";
+@import "sign_in";
+@import "sign_up";
 
+div.container {
+  @include outer-container;
+}
 
+#scalloped-edge {
+  width: 100%;
+  overflow: hidden;
+}
 
 .scalloped-edge {
-  position: absolute;
-  top: -25px;
+  width: 100%;
 
 }
+
 body {
 
   background-image: url("paper.png");
@@ -64,21 +77,12 @@ body {
   color: #a25d8f;
 }
 
-.unframed_pictures_gallery {
-  margin: 50px;
-  background-color: #efefeb;
-}
 
-.picture-form {
-  margin-top: 75px;
-  margin-bottom: 50px;
-  margin-left: 200px;
-  margin-right: 200px;
-//  border: 1px solid $base-border-color;
-//  background-color: #fcd872;
-  padding: 25px;
-  color: #50378e;
 
-}
+
+
+
+
+
 
 

@@ -1,4 +1,5 @@
-<div class="sign-in-form">
+<section class="sign-in-form">
+  <article class="sign-in-form">
   <h1>Sign In</h1>
   <%= form_for :session, url: sign_in_path do |f| %>
     <%= f.label :email %>
@@ -9,4 +10,5 @@
 
     <%= f.submit "Sign In" %>
   <% end %>
-</div>
+  </article>
+</section>
