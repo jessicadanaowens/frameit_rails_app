@@ -32,8 +32,8 @@
     <a href="#" class="is-active tab-link">Unframed</a>
 
     <div class="tab-content is-open">
-      <div class="cards">
-        <% current_user.pictures.each do |picture| %>
+      <% current_user.pictures.each do |picture| %>
+    <div class="cards">
           <div class="card">
             <div class="card-image">
               <img src="<%= picture.image.url %>" alt="">
