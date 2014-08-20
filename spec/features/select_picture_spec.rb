@@ -5,7 +5,7 @@ feature "select picture to visualize in frame" do
 
     click_on "select"
 
-    within ".work_table" do
+    within ".work-table" do
       image = page.find('img')
       expect(image).to_not be_nil
     end
@@ -18,7 +18,7 @@ feature "select picture to visualize in frame" do
 
     fill_in "picture_file_name", :with => "description"
     attach_file('picture_image', 'spec/photos/frame.png')
-    click_button "Upload a picture to frame"
+    click_button "Upload"
 
     expect(page).to have_content "description"
   end

@@ -50,7 +50,7 @@ feature 'Visitor signs in' do
     visit root_path
     click_on "Sign In"
 
-    within ".sign-in-form" do
+    within "article.sign-in-form" do
       fill_in "Email", :with => email
       fill_in "Password", :with => password
       click_on "Sign In"

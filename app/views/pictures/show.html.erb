@@ -1,16 +1,47 @@
+<container ng-app="frameApp">
+<div ng-controller="FrameController">
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.18/angular.min.js"></script>
 
 <section class="work-table">
   <article class="image-on-table">
   <%= image_tag @picture.image.url %>
   </article>
 </section>
+  <%= image_tag "frame.png", {class: "frame", "ng-src"=> "{{currentImage()}}"}%>
 
-<div id="slider">
-  <ul class="slides">
-    <li class="slide"><%= image_tag @picture.image.url %></li>
-    <li class="slide"><%= image_tag @picture.image.url %></li>
-  </ul>
+<button ng-click="previousFrame()">&larr;</button>
+<button ng-click="nextFrame()">&rarr;</button>
 </div>
+</container>
+
+<script>
+
+  angular.module('frameApp', [])
+    .controller('FrameController', ['$scope', function($scope) {
+      var frames = ["/assets/frame.png","/assets/paper.png", "/assets/logo.png"];
+      $scope.frameIndex = 0;
+      $scope.currentImage = function() {
+        return frames[$scope.frameIndex];
+      };
+
+      $scope.nextFrame = function() {
+        $scope.frameIndex = $scope.frameIndex + 1;
+        if ($scope.frameIndex > frames.length) {
+          $scope.frameIndex = 0;
+        }
+      };
+
+      $scope.previousFrame = function() {
+        $scope.frameIndex = $scope.frameIndex - 1;
+        if ($scope.frameIndex < 0) {
+          $scope.frameIndex = frames.length - 1;
+        }
+      };
+
+    }]);
+</script>
 
 
 

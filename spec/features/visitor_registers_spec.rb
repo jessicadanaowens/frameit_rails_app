@@ -36,7 +36,7 @@ feature 'visitor registers' do
     click_button "Upload a picture to frame"
     click_on "Sign Up"
 
-    within ".sign-up-form" do
+    within "article.sign-up-form" do
       fill_in "Email", :with => "blake@gmail.com"
       fill_in "Password", :with => "12345"
       fill_in "Password confirmation", :with => "12345"
@@ -50,7 +50,7 @@ feature 'visitor registers' do
       visit root_path
       click_on "Sign Up"
 
-      within ".sign-up-form" do
+      within "article.sign-up-form" do
         fill_in "Email", :with => email
         fill_in "Password", :with => password
         fill_in "Password confirmation", :with => password

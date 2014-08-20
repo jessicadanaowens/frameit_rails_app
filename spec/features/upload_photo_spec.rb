@@ -4,7 +4,7 @@ feature "User can upload a photo" do
   scenario "succesfully" do
     upload_picture
 
-    within('.unframed_pictures_gallery') do
+    within('.cards') do
       image = page.find('img')
 
       expect(image).to_not be_nil
@@ -29,7 +29,7 @@ feature "User can upload a photo" do
 
     fill_in "picture_file_name", :with => "description"
     attach_file('picture_image', 'spec/photos/frame.png')
-    click_button "Upload a picture to frame"
+    click_button "Upload"
 
     expect(page).to have_content "description"
   end

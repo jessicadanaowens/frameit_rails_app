@@ -31,9 +31,10 @@
   <li class="tab-header-and-content">
     <a href="#" class="is-active tab-link">Unframed</a>
 
+
     <div class="tab-content is-open">
-      <% current_user.pictures.each do |picture| %>
-    <div class="cards">
+      <div class="cards">
+        <% current_user.pictures.each do |picture| %>
           <div class="card">
             <div class="card-image">
               <img src="<%= picture.image.url %>" alt="">
@@ -53,7 +54,6 @@
       </div>
     </div>
   </li>
-
   <li class="tab-header-and-content">
     <a href="#" class="tab-link">Framed</a>
 
@@ -79,6 +79,7 @@
         tincidunt nibh, sit amet imperdiet dolor justo congue turpis.</p>
     </div>
   </li>
+
 
   <li class="tab-header-and-content">
     <a href="#" class="tab-link">Last Item</a>
