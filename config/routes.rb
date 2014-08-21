@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   root to: 'home#index'
   resources :users, except: :create
   resources :pictures
+  resources :frames
 
 
 

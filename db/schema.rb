@@ -11,10 +11,39 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140815220321) do
+ActiveRecord::Schema.define(version: 20140821221217) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "frame_size_join", force: true do |t|
+    t.string   "frame_id"
+    t.string   "frame_size_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "frame_sizes", force: true do |t|
+    t.integer  "height"
+    t.integer  "width"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "dimensions"
+  end
+
+  create_table "frames", force: true do |t|
+    t.string   "user_id"
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "framesizejoins", force: true do |t|
+    t.string   "frame_id"
+    t.string   "frame_size_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "pictures", force: true do |t|
     t.string   "file_name"
