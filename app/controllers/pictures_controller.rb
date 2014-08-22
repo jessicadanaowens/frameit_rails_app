@@ -10,12 +10,6 @@ class PicturesController < ApplicationController
 
     @picture = Picture.new
 
-    # @upload = Picture.new(
-    #   :file_name=>params[:picture][:file_name],
-    #   :image => params[:picture][:image],
-    #   :user_id=>picture_creator.id
-    # )
-
     if picture_creator.save
       flash[:notice] = "Picture successfully uploaded"
       redirect_to "/pictures"
@@ -29,7 +23,6 @@ class PicturesController < ApplicationController
   def destroy
     @picture = Picture.find(params[:id])
     @picture.destroy
-
     redirect_to pictures_path
   end
 
@@ -38,19 +31,8 @@ class PicturesController < ApplicationController
   end
 
   def update
-
-    if session[:user_id]
-      user_id = session[:user_id]
-    else
-      user_id = session[:guest_user_id]
-    end
-
-    @picture = Picture.find(params[:id])
-    @picture.update(
-      :file_name=>params[:picture][:file_name],
-      :image => params[:picture][:image],
-      :user_id=>user_id
-    )
+    picture_creator = PictureCreator.new(session, params)
+    picture_creator.update
     redirect_to pictures_path
   end
 
