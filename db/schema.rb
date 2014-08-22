@@ -11,12 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140821224954) do
+ActiveRecord::Schema.define(version: 20140822203334) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "frame_size_join", force: true do |t|
+  create_table "frame_size_joins", force: true do |t|
     t.string   "frame_id"
     t.string   "frame_size_id"
     t.datetime "created_at"

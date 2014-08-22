@@ -42,7 +42,7 @@ class FrameCreator
 
   def create_joins
     frame_size_ids.each do |id|
-      Framesizejoin.create(
+      FrameSizeJoin.create(
         :frame_id => frame.id,
         :frame_size_id => id
       )
