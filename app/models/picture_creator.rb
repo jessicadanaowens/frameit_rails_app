@@ -16,5 +16,16 @@ class PictureCreator
     end
   end
 
+  def picture
+    @picture ||= Picture.new(
+      :file_name=>params[:picture][:file_name],
+      :image => params[:picture][:image],
+      :user_id=> id
+    )
+  end
+
+  def save
+    @saved = picture.save
+  end
 
 end
