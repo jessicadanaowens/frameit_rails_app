@@ -1,18 +1,15 @@
 require "rails_helper"
 
-feature "User clicks on the sell frames link in the navbar" do
-  scenario "and fills out a form to sell a frame" do
-
+feature "User can upload a frame to sell" do
+  scenario "successfully" do
+    visit root_url
     click_on "Sell Frames"
 
-    fill_in "item number", :with => "123"
-    fill_in "custom?", :with => "false"
-    # fill_in "name", :with =>"gilted frame"
-    # find(:css, "#frameID[value='62']").set(true)
-    # attach_file('picture_image', 'spec/photos/frame.png')
-    # click_button "Upload"
-    #
-    # expect(page).to have_content "description"
+    attach_file('picture_image', 'spec/photos/frame.png')
+
+    fill_in "Name", :with => "gilted frame"
+    # check("checkbox")
+    click_on "Create Frame"
 
 
   end

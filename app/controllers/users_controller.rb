@@ -9,12 +9,6 @@ class UsersController < ApplicationController
 
     if @user.save
 
-      #if the user successfully registers
-      #create a user session id
-      #find all the pictures in the table that have the guest user id
-      #replace the guest user id in the pictures table with the new user id
-      #delete the guest from the database
-
       session[:user_id] = @user.id
 
       if guest_user

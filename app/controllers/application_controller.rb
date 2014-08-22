@@ -22,7 +22,5 @@ class ApplicationController < ActionController::Base
     end
   end
 
-
-
   helper_method :current_user, :signed_in?, :guest_user
 end
