@@ -6,18 +6,22 @@ class PicturesController < ApplicationController
 
   def create
 
+    picture_creator = PictureCreator.new(session, params)
+
     @picture = Picture.new
 
-    if session[:user_id]
-      user_id = session[:user_id]
-    else
-      user_id = session[:guest_user_id]
-    end
+    # if session[:user_id]
+    #   user_id = session[:user_id]
+    # else
+    #   user_id = session[:guest_user_id]
+    # end
+
+
 
     @upload = Picture.new(
       :file_name=>params[:picture][:file_name],
       :image => params[:picture][:image],
-      :user_id=>user_id
+      :user_id=>picture_creator.id
     )
 
     if @upload.save
