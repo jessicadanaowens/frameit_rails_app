@@ -9,7 +9,7 @@
   <%= image_tag @picture.image.url %>
   </article>
 </section>
-  <%= image_tag "frame.png", {class: "frame", "ng-src"=> "{{currentImage()}}"}%>
+  <%= image_tag "", {class: "frame", "ng-src"=> "{{currentImage()}}"}%>
 
 <button ng-click="previousFrame()">&larr;</button>
 <button ng-click="nextFrame()">&rarr;</button>
@@ -19,24 +19,32 @@
 <script>
 
   angular.module('frameApp', [])
-    .controller('FrameController', ['$scope', function($scope) {
-      var frames = ["/assets/frame.png","/assets/paper.png", "/assets/logo.png"];
+    .controller('FrameController', ['$scope', '$http', function($scope, $http) {
+      $scope.frames = [];
+      $http.get('/frames.json').success(function(data){
+        $scope.frames = data;
+
+      });
       $scope.frameIndex = 0;
       $scope.currentImage = function() {
-        return frames[$scope.frameIndex];
+        if ($scope.frames.length > 0) {
+          return $scope.frames[$scope.frameIndex].image.url;
+        }
       };
 
       $scope.nextFrame = function() {
-        $scope.frameIndex = $scope.frameIndex + 1;
-        if ($scope.frameIndex > frames.length) {
+        if ($scope.frameIndex + 1 >= $scope.frames.length) {
           $scope.frameIndex = 0;
+        } else {
+          $scope.frameIndex += 1;
         }
       };
 
       $scope.previousFrame = function() {
-        $scope.frameIndex = $scope.frameIndex - 1;
-        if ($scope.frameIndex < 0) {
-          $scope.frameIndex = frames.length - 1;
+        if ($scope.frameIndex - 1 < 0) {
+          $scope.frameIndex = $scope.frames.length - 1;
+        } else {
+          $scope.frameIndex -= 1;
         }
       };
 

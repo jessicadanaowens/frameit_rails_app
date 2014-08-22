@@ -8,7 +8,6 @@ class SessionsController < ApplicationController
     session_params = params[:session]
     user = User.authenticate(session_params[:email], session_params[:password])
 
-
     if user
       session.clear
       session[:user_id] = user.id

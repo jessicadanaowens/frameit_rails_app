@@ -2,13 +2,19 @@ require "rails_helper"
 
 feature "User can upload a frame to sell" do
   scenario "successfully" do
-    visit root_url
+
+    register(email: "jessica@gmail.com", password: "12345")
+
+    Frame_Size.create(:height => 10, :width => 10, :dimensions=>'10" x 10"')
+
     click_on "Sell Frames"
 
-    attach_file('picture_image', 'spec/photos/frame.png')
+
+    attach_file('frame_image', 'spec/photos/frame.png')
 
     fill_in "Name", :with => "gilted frame"
-    # check("checkbox")
+
+    check('10" x 10"')
     click_on "Create Frame"
 
 

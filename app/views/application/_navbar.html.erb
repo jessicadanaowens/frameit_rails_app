@@ -6,7 +6,6 @@
     <a href="" class="navigation-menu-button" id="js-mobile-menu">MENU</a>
     <div class="nav">
       <ul id="navigation-menu">
-        <li class="nav-link"><%= link_to "Sell Frames", frames_path %></li>
         <% if signed_in? %>
           <% if guest_user %>
             <li class="nav-link">Signed in as guest</li>
@@ -15,6 +14,8 @@
           <% else %>
             <li class="nav-link">Signed in as <%=current_user.email %></li>
             <li class="nav-link"><%= link_to "Sign Out", sign_out_path, method: :delete %></li>
+            <li class="nav-link"><%= link_to "Sell Frames", frames_path %></li>
+            <li class="nav-link"><%= link_to "Your Gallery", pictures_path %></li>
           <% end %>
         <% else %>
           <li class="nav-link"><%= link_to "Sign Up", sign_up_path("nil") %></li>

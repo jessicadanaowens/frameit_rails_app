@@ -1,12 +1,26 @@
-<%= form_for @frame, url: frames_path do |f| %>
+<div class="container">
+  <section class="picture-form">
+    <%= form_for @frame, :html => {:multipart => true} do |f| %>
 
+      <article class="form-fields">
 
-  <%= f.label :name %>
-  <%= f.text_field :name %>
+        <%= f.file_field :image %>
 
-  <%= collection_check_boxes(:frame_size_join, :frame_size_ids, Frame_Size.all, :id, :dimensions) %>
+        <%= f.label :name %>
+        <%= f.text_field :name %>
 
+        <%= collection_check_boxes(:frame_size_join, :frame_size_ids, Frame_Size.all, :id, :dimensions) %>
 
-  <%= f.submit %>
+        <%= f.submit %>
 
+      </article>
+    <% end %>
+  </section>
+</div>
+
+<% current_user.frames.each do |frame| %>
+  <img src="<%= frame.image.url %>" >
 <% end %>
+
+
+
