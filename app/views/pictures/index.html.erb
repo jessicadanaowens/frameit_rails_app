@@ -29,7 +29,7 @@
 
 <ul class="accordion-tabs">
   <li class="tab-header-and-content">
-    <a href="#" class="is-active tab-link">Unframed</a>
+    <a href="#" class="is-active tab-link">Pictures</a>
 
 
     <div class="tab-content is-open">
@@ -44,7 +44,7 @@
             </div>
             <div class="card-stats">
               <ul>
-                <li><span><%= link_to "edit", edit_picture_path(picture) %></span></li>
+                <li><span><%= link_to "edit name", edit_picture_path(picture) %></span></li>
                 <li><span><%= link_to "remove", picture, :confirm => 'Are you sure?', :method => :delete %></span></li>
                 <li><span><%= link_to "select", picture_path(picture) %></span></li>
               </ul>
@@ -55,7 +55,7 @@
     </div>
   </li>
   <li class="tab-header-and-content">
-    <a href="#" class="tab-link">Framed</a>
+    <a href="#" class="tab-link">Favorite Frames</a>
 
     <div class="tab-content">
       <p>Ut laoreet augue et neque pretium non sagittis nibh pulvinar. Etiam ornare tincidunt orci quis ultrices.

@@ -14,10 +14,10 @@ feature "User can upload a frame to sell" do
 
     fill_in "Name", :with => "gilted frame"
 
-    check('10" x 10"')
     click_on "Create Frame"
-
-
+    expect(page).to have_content "gilted frame"
+    click_on "remove"
+    expect(page).not_to have_content "gilted frame"
   end
 
   def register (email:, password:)

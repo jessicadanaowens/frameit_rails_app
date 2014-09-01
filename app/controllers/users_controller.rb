@@ -5,23 +5,22 @@ class UsersController < ApplicationController
   end
 
   def create
+
+    user_creator = UserCreator.new(allowed_parameters)
     @user = User.new(allowed_parameters)
 
     if @user.save
 
-      session[:user_id] = @user.id
-
       if guest_user
 
-        pictures = Picture.where(user_id: session[:guest_user_id])
-        if pictures
-          pictures.update_all(user_id: session[:user_id])
-        end
+        pictures = Picture.where(user: guest_user)
+
+        pictures.update_all(user_id: @user.id)
 
         session.delete(:guest_user_id)
       end
 
-
+      session[:user_id] = @user.id
       if params[:source] == "guest_upload"
         redirect_to pictures_path
       else

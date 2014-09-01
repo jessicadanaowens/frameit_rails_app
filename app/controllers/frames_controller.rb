@@ -22,4 +22,10 @@ class FramesController < ApplicationController
       render :index
     end
   end
+
+  def destroy
+    Frame.find(params[:id]).destroy
+
+    redirect_to frames_path
+  end
 end

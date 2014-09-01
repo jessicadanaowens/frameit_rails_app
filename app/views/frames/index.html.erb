@@ -20,6 +20,10 @@
 
 <% current_user.frames.each do |frame| %>
   <img src="<%= frame.image.url %>" >
+  <p><%= frame.name %></p>
+  <ul>
+    <li><span><%= link_to "remove", frame, :method => :delete %></span></li>
+  </ul>
 <% end %>
 
 

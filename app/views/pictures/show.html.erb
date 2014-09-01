@@ -1,48 +1,52 @@
 <container ng-app="frameApp">
-<div ng-controller="FrameController">
+  <div ng-controller="FrameController">
 
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.18/angular.min.js"></script>
 
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.18/angular.min.js"></script>
+    <section class="work-table">
+      <article class="image-on-table">
+        <%= image_tag @picture.image.url %>
+      </article>
+    </section>
 
-<section class="work-table">
-  <article class="image-on-table">
-  <%= image_tag @picture.image.url %>
-  </article>
-</section>
-  <%= image_tag "", {class: "frame", "ng-src"=> "{{currentImage()}}"}%>
+    <%= image_tag "", {class: "frame", "ng-src" => "{{currentImage()}}"} %>
 
-<button ng-click="previousFrame()">&larr;</button>
-<button ng-click="nextFrame()">&rarr;</button>
-</div>
+    <button ng-click="previousFrame()">&larr;</button>
+    <button ng-click="nextFrame()">&rarr;</button>
+
+  </div>
 </container>
 
 <script>
 
   angular.module('frameApp', [])
-    .controller('FrameController', ['$scope', '$http', function($scope, $http) {
+    .controller('FrameController', ['$scope', '$http', function ($scope, $http) {
       $scope.frames = [];
-      $http.get('/frames.json').success(function(data){
+      $http.get('/frames.json').success(function (data) {
         $scope.frames = data;
 
       });
+
       $scope.frameIndex = 0;
-      $scope.currentImage = function() {
+
+      $scope.currentImage = function () {
         if ($scope.frames.length > 0) {
           return $scope.frames[$scope.frameIndex].image.url;
         }
       };
 
-      $scope.nextFrame = function() {
-        if ($scope.frameIndex + 1 >= $scope.frames.length) {
+      $scope.nextFrame = function () {
+        if ($scope.frameIndex == $scope.frames.length) {
           $scope.frameIndex = 0;
-        } else {
+        }
+        if ($scope.frameIndex < $scope.frames.length) {
           $scope.frameIndex += 1;
         }
       };
 
-      $scope.previousFrame = function() {
+      $scope.previousFrame = function () {
         if ($scope.frameIndex - 1 < 0) {
-          $scope.frameIndex = $scope.frames.length - 1;
+          $scope.frameIndex = $scope.frames.length;
         } else {
           $scope.frameIndex -= 1;
         }

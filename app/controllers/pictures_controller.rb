@@ -2,6 +2,7 @@ class PicturesController < ApplicationController
 
   def index
     @picture = Picture.new
+
   end
 
   def create
@@ -39,6 +40,10 @@ class PicturesController < ApplicationController
   def show
     @picture = Picture.find(params[:id])
 
+    #has many through
+    #active record join tables
+    #active records includes
+    #json render nested object
   end
 
   private

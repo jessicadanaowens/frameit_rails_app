@@ -16,9 +16,6 @@ class FrameCreator
   end
 
   def frame
-    puts "*" * 80
-    puts params
-    puts "*" * 80
     @frame ||= Frame.new(
       :user_id => user_id,
       :name => params[:frame][:name],
