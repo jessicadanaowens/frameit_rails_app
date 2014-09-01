@@ -19,30 +19,13 @@ class FrameCreator
     @frame ||= Frame.new(
       :user_id => user_id,
       :name => params[:frame][:name],
-      :image => params[:frame][:image]
+      :image => params[:frame][:image],
+      :length => params[:frame][:length],
+      :width => params[:frame][:width]
     )
   end
 
   def save
     @saved = frame.save
-    if @saved
-      create_joins
-    end
-    @saved
-  end
-
-  def frame_size_ids
-    params[:frame_size_join][:frame_size_ids].select do |id|
-      !id.blank?
-    end
-  end
-
-  def create_joins
-    frame_size_ids.each do |id|
-      FrameSizeJoin.create(
-        :frame_id => frame.id,
-        :frame_size_id => id
-      )
-    end
   end
 end
