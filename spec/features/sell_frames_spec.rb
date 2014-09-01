@@ -13,6 +13,8 @@ feature "User can upload a frame to sell" do
     attach_file('frame_image', 'spec/photos/frame.png')
 
     fill_in "Name", :with => "gilted frame"
+    fill_in "Length", :with => "36"
+    fill_in "Width", :with => "2"
 
     click_on "Create Frame"
     expect(page).to have_content "gilted frame"
