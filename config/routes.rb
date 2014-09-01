@@ -6,11 +6,15 @@ Rails.application.routes.draw do
   delete "sign_out" => "sessions#delete"
   post "/users/:source" => "users#create"
   post "/users" => "users#create"
+  get "hang_it/:id" => "walls#index", :as => "hang_it"
 
-  root to: 'home#index'
+  root to: "home#index"
   resources :users, except: :create
   resources :pictures
   resources :frames
+  resources :walls
+
+
 
 
 

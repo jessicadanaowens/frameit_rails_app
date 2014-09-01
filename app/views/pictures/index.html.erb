@@ -46,7 +46,8 @@
               <ul>
                 <li><span><%= link_to "edit name", edit_picture_path(picture) %></span></li>
                 <li><span><%= link_to "remove", picture, :confirm => 'Are you sure?', :method => :delete %></span></li>
-                <li><span><%= link_to "select", picture_path(picture) %></span></li>
+                <li><span><%= link_to "frame it", picture_path(picture) %></span></li>
+                <li><span><%= link_to "hang it", hang_it_path(picture) %></span></li>
               </ul>
             </div>
           </div>

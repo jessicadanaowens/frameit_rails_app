@@ -22,6 +22,17 @@ feature "User can upload a photo" do
     expect(page).to have_content "a different description"
   end
 
+  scenario "User can hang a photo" do
+    upload_picture
+
+    click_on "hang it"
+
+    within('#room') do
+      image = page.find('img#picture')
+      expect(image).to_not be_nil
+    end
+  end
+
   def upload_picture
     visit root_url
 

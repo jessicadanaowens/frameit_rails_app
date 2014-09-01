@@ -3,7 +3,7 @@ feature "select picture to visualize in frame" do
 
     upload_picture
 
-    click_on "select"
+    click_on "frame it"
 
     within ".work-table" do
       image = page.find('img')
