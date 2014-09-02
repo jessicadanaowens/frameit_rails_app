@@ -21,6 +21,7 @@ gem 'bcrypt', '~> 3.1.7'
 group :development, :test do
   gem 'rspec-rails', '~> 3.0.2'
   gem 'capybara', '~> 2.4.1'
+  gem 'jasmine'
 end
 
 gem 'carrierwave', '~> 0.10.0'

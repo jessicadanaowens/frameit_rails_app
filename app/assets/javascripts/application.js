@@ -19,26 +19,7 @@ $(document).ready(function() {
 
   //hide and show picture form and wall form
 
-  var pictureFormButton = $('#picture-form-button');
-  var uploadPictureForm = $('#upload-picture-form');
-  var wallFormButton = $('#wall-form-button');
-  var uploadWallForm = $('#upload-wall-form');
-
-  uploadPictureForm.hide();
-  uploadWallForm.hide();
-
-  pictureFormButton.on( 'click', function(e){
-    e.preventDefault();
-    uploadPictureForm.show();
-    uploadWallForm.hide();
-  });
-
-  wallFormButton.on( 'click', function(e){
-    e.preventDefault();
-    uploadPictureForm.hide();
-    uploadWallForm.show();
-  });
-
+  forms();
 
   var menu = $('#navigation-menu');
   var menuToggle = $('#js-mobile-menu');
@@ -97,7 +78,7 @@ $(document).ready(function() {
 
   $('')
 
-  //frame-it canvas
+//  frame-it canvas
 //
 //  var frameIt = function() {
 //    var frameItCanvas = document.getElementById("frame-it-canvas");
@@ -108,7 +89,7 @@ $(document).ready(function() {
 //    $('.frame').load(function (evt) {
 //      frameItContext.drawImage(evt.currentTarget, 10, 10);
 //    });
-//  }
+//  };
 //
 //  frameIt();
 

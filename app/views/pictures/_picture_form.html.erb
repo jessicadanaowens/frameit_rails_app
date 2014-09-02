@@ -1,0 +1,26 @@
+<div id="upload-picture-form">
+  <%= form_for @picture, :html => {:multipart => true} do |f| %>
+    <% if @picture.errors.any? %>
+      <div class="error_messages">
+        <ul>
+          <% for message in @picture.errors.full_messages %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <article class="form-fields">
+
+      <p>
+        <%= f.file_field :image %>
+      </p>
+
+      <p>
+        <span><%= f.label :description %> <%= f.text_field :file_name %></span>
+      </p>
+
+      <%= f.submit "Upload Picture" %>
+    </article>
+  <% end %>
+</div>
