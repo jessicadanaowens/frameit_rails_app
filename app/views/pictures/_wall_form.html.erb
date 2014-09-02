@@ -1,0 +1,26 @@
+<div id="upload-wall-form">
+  <%= form_for @wall, url: "/walls", :html => {:multipart => true} do |f| %>
+    <article class="form-fields">
+
+      <p>
+        <%= f.file_field :image %>
+      </p>
+
+      <p>
+        <%= f.label :height %>
+        <%= f.text_field :height %>
+      </p>
+
+      <p>
+        <%= f.label :width %>
+        <%= f.text_field :width %>
+      </p>
+
+      <p>
+        <span><%= f.label :description %> <%= f.text_field :description %></span>
+      </p>
+
+      <%= f.submit "Create Wall" %>
+    </article>
+  <% end %>
+</div>
