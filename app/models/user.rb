@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   has_many :pictures
   has_many :frames
+  has_many :walls
 
   attr_accessor :password
   before_save :encrypt_password

@@ -13,7 +13,6 @@
   <li class="tab-header-and-content">
     <a href="#" class="is-active tab-link">Pictures</a>
 
-
     <div class="tab-content is-open">
       <div class="cards">
         <% current_user.pictures.each do |picture| %>
@@ -52,14 +51,28 @@
   </li>
 
   <li class="tab-header-and-content">
-    <a href="#" class="tab-link">Third</a>
+    <a href="#" class="tab-link">Walls</a>
 
     <div class="tab-content">
-      <p>Donec mattis mauris gravida metus laoreet non rutrum sem viverra. Aenean nibh libero, viverra vel vestibulum
-        in, porttitor ut sapien. Phasellus tempor lorem id justo ornare tincidunt. Nulla faucibus, purus eu placerat
-        fermentum, velit mi iaculis nunc, bibendum tincidunt ipsum justo eu mauris. Nulla facilisi. Vestibulum vel
-        lectus ac purus tempus suscipit nec sit amet eros. Nullam fringilla, enim eu lobortis dapibus, quam magna
-        tincidunt nibh, sit amet imperdiet dolor justo congue turpis.</p>
+      <div class="cards">
+        <% current_user.walls.each do |wall| %>
+          <div class="card">
+            <div class="card-image">
+              <img src="<%= wall.image.url %>" alt="">
+            </div>
+            <div class="card-header">
+              <%= wall.description %>
+            </div>
+            <div class="card-stats">
+              <ul>
+                <li><span><%= link_to "edit description", edit_wall_path(wall) %></span></li>
+                <li><span><%= link_to "remove", wall, :method => :delete %></span></li>
+              </ul>
+            </div>
+          </div>
+        <% end %>
+      </div>
+
     </div>
   </li>
 
