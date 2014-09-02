@@ -3,17 +3,17 @@
     <article class="form-fields">
 
       <p>
-        <%= f.file_field :image %>
+        <%= f.file_field :image, :required => true %>
       </p>
 
       <p>
         <%= f.label :height %>
-        <%= f.text_field :height %>
+        <%= f.text_field :height, :required => true %>
       </p>
 
       <p>
         <%= f.label :width %>
-        <%= f.text_field :width %>
+        <%= f.text_field :width, :required => true %>
       </p>
 
       <p>
