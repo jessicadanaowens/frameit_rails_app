@@ -15,7 +15,9 @@ $('document').ready(function () {
       ctx.drawImage(img, 0,0);
     };
 
-    img.src = "http://images.christmastimeclipart.com/images/2/1271716593176_1788/img_1271716593176_17881.jpg";
+
+
+    img.src = $('#hang-picture').attr('src');
     var canvas=document.getElementById("canvas");
     var ctx=canvas.getContext("2d");
     var canvasOffset=$("#canvas").offset();
