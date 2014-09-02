@@ -14,8 +14,4 @@ Rails.application.routes.draw do
   resources :frames
   resources :walls
 
-
-
-
-
 end

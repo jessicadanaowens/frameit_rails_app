@@ -1,29 +1,61 @@
 <div class="container">
   <section class="picture-form">
-    <%= form_for @picture, :html => {:multipart => true} do |f| %>
-      <% if @picture.errors.any? %>
-        <div class="error_messages">
-          <ul>
-            <% for message in @picture.errors.full_messages %>
-              <li><%= message %></li>
-            <% end %>
-          </ul>
-        </div>
+    <p id="picture-form-button"><%= link_to "Select a picture to frame" %></p>
+    <p id="wall-form-button"><%= link_to "Create a wall to hang your picture on" %></p>
+
+    <div id="upload-picture-form">
+      <%= form_for @picture, :html => {:multipart => true} do |f| %>
+        <% if @picture.errors.any? %>
+          <div class="error_messages">
+            <ul>
+              <% for message in @picture.errors.full_messages %>
+                <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+
+        <article class="form-fields">
+
+          <p>
+            <%= f.file_field :image %>
+          </p>
+
+          <p>
+            <span><%= f.label :description %> <%= f.text_field :file_name %></span>
+          </p>
+
+          <%= f.submit "Upload Picture" %>
+        </article>
       <% end %>
+    </div>
 
-      <article class="form-fields">
-        <%= f.hidden_field :user_id %>
-        <p>
-          <%= f.file_field :image %>
-        </p>
+    <div id="upload-wall-form">
+      <%= form_for @wall, url: "/walls", :html => {:multipart => true} do |f| %>
+        <article class="form-fields">
 
-        <p>
-          <span><%= f.label :description %> <%= f.text_field :file_name %></span>
-        </p>
+          <p>
+            <%= f.file_field :image %>
+          </p>
 
-        <%= f.submit "Upload" %>
-      </article>
-    <% end %>
+          <p>
+            <%= f.label :height %>
+            <%= f.text_field :height %>
+          </p>
+
+          <p>
+            <%= f.label :width %>
+            <%= f.text_field :width %>
+          </p>
+
+          <p>
+            <span><%= f.label :description %> <%= f.text_field :description %></span>
+          </p>
+
+          <%= f.submit "Create Wall" %>
+        </article>
+      <% end %>
+    </div>
   </section>
 </div>
 

@@ -2,6 +2,7 @@ class PicturesController < ApplicationController
 
   def index
     @picture = Picture.new
+    @wall = Wall.new
 
   end
 

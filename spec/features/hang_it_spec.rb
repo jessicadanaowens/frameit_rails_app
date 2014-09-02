@@ -1,28 +1,7 @@
 require "rails_helper"
 
-feature "User can upload a photo" do
-  scenario "succesfully" do
-    upload_picture
-
-    within('.cards') do
-      image = page.find('img')
-
-      expect(image).to_not be_nil
-    end
-  end
-
-  scenario "User can edit a photo" do
-    upload_picture
-
-    click_on "edit"
-
-    fill_in "picture_file_name", :with => "a different description"
-    click_button "Update Picture"
-
-    expect(page).to have_content "a different description"
-  end
-
-  scenario "User can hang a photo" do
+feature "User can hang a photo" do
+  scenario "successfully" do
     upload_picture
 
     click_on "hang it"
@@ -35,6 +14,8 @@ feature "User can upload a photo" do
     fill_in "wall_description", :with => "beautiful room"
     fill_in "height", :with => "60"
     fill_in "width", :with => "72"
+    attach_file('wall_image', 'spec/photos/frame.png')
+    click_on "Create wall"
   end
 
   def upload_picture

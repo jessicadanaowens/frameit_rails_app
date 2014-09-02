@@ -9,6 +9,8 @@
       </article>
     </section>
 
+    <canvas id = "frame-it-canvas" width="200" height="200"></canvas>
+
     <%= image_tag "", {class: "frame", "ng-src" => "{{currentImage()}}"} %>
 
     <button ng-click="previousFrame()">&larr;</button>

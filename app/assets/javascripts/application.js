@@ -16,6 +16,30 @@
 //= require_tree .
 
 $(document).ready(function() {
+
+  //hide and show picture form and wall form
+
+  var pictureFormButton = $('#picture-form-button');
+  var uploadPictureForm = $('#upload-picture-form');
+  var wallFormButton = $('#wall-form-button');
+  var uploadWallForm = $('#upload-wall-form');
+
+  uploadPictureForm.hide();
+  uploadWallForm.hide();
+
+  pictureFormButton.on( 'click', function(e){
+    e.preventDefault();
+    uploadPictureForm.show();
+    uploadWallForm.hide();
+  });
+
+  wallFormButton.on( 'click', function(e){
+    e.preventDefault();
+    uploadPictureForm.hide();
+    uploadWallForm.show();
+  });
+
+
   var menu = $('#navigation-menu');
   var menuToggle = $('#js-mobile-menu');
   var signUp = $('.sign-up');
@@ -59,42 +83,7 @@ $(document).ready(function() {
     }
   });
 
-  //jquery slideshow
-
-  //configuration
-  var width = 720;
-  var animationSpeed = 500;
-  var pause = 1000;
-  var currentSlide = 1;
-
-  //cache DOM
-  var $slider = $('#slider');
-  var $slideContainer = $slider.find('.slides');
-  var $slides = $slideContainer.find('.slide');
-
-  var interval;
-
-  function startSlider(){
-    interval = setInterval(function() {
-        $slideContainer.animate({'margin-left': '-='+width}, animationSpeed, function() {
-          currentSlide++;
-          if(currentSlide === $slides.length) {
-            currentSlide = 1;
-            $slideContainer.css('margin-left', 0);
-          }
-        });
-      }, pause);
-  }
-
-  function stopSlider() {
-    clearInterval(interval);
-  }
-
-  $slider.on('mouseenter', stopSlider).on('mouseleave', startSlider);
-
-  startSlider();
-
-  //alert messages
+//  alert messages
 
   $(function () {
     var alert = $('.alert');
@@ -105,5 +94,24 @@ $(document).ready(function() {
       }, 3000);
     }
   });
+
+  $('')
+
+  //frame-it canvas
+//
+//  var frameIt = function() {
+//    var frameItCanvas = document.getElementById("frame-it-canvas");
+//    var frameItContext = frameItCanvas.getContext("2d");
+//    frameItContext.fillStyle = "rgb(0,0,0)";
+//    frameItContext.fillRect(10, 10, 400, 300);
+//
+//    $('.frame').load(function (evt) {
+//      frameItContext.drawImage(evt.currentTarget, 10, 10);
+//    });
+//  }
+//
+//  frameIt();
+
+
 
 });

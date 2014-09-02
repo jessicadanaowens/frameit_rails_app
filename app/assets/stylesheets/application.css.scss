@@ -13,11 +13,17 @@
 @import "sign_up";
 @import "alert";
 
+
+#hang-picture {
+  visibility: hidden;
+}
+
 img.frame {
   position: absolute;
   top: 130px;
   left: 399px;
 }
+
 div.container {
   @include outer-container;
 }
