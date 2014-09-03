@@ -21,6 +21,7 @@ $(document).ready(function() {
 
   forms();
 
+
   var menu = $('#navigation-menu');
   var menuToggle = $('#js-mobile-menu');
   var signUp = $('.sign-up');
@@ -45,7 +46,6 @@ $(document).ready(function() {
   });
 
   //accordion
-
   $('.accordion-tabs').each(function(index) {
     $(this).children('li').first().children('a').addClass('is-active').next().addClass('is-open').show();
   });
@@ -65,7 +65,6 @@ $(document).ready(function() {
   });
 
 //  alert messages
-
   $(function () {
     var alert = $('.alert');
     if (alert.length > 0) {
@@ -76,10 +75,7 @@ $(document).ready(function() {
     }
   });
 
-  $('')
-
 //  frame-it canvas
-//
 //  var frameIt = function() {
 //    var frameItCanvas = document.getElementById("frame-it-canvas");
 //    var frameItContext = frameItCanvas.getContext("2d");
@@ -92,7 +88,5 @@ $(document).ready(function() {
 //  };
 //
 //  frameIt();
-
-
 
 });

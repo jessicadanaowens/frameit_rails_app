@@ -14,9 +14,13 @@ feature "user can enter site as a guest" do
     visit root_url
     click_button("Upload a picture to frame")
 
-    fill_in "picture_file_name", :with => "description"
-    attach_file('picture_image', 'spec/photos/frame.png')
-    click_button "Upload"
+    within('#upload-picture-form') do
+      fill_in "picture_file_name", :with => "description"
+      fill_in "Height", :with => "5"
+      fill_in "Width", :with => "6"
+      attach_file('picture_image', 'spec/photos/frame.png')
+      click_button "Upload"
+    end
 
     expect(page).to have_content "description"
 

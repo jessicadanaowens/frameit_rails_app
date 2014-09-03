@@ -1,21 +1,17 @@
 $('document').ready(function () {
 
-//  var canvas = document.getElementById("canvas");
-//    var context = canvas.getContext("2d");
-//  $('#hang-picture').load(function(evt) {
-//      context.drawImage(evt.currentTarget, 0, 0, 400, 400);
-//  });
-
+  var canvas = document.getElementById("canvas");
+    var context = canvas.getContext("2d");
+  $('#hang-picture').load(function(evt) {
+      context.drawImage(evt.currentTarget, 0, 0, 400, 400);
+  });
 
   $(function(){
-
 
     var img = new Image();
     img.onload = function(){
       ctx.drawImage(img, 0,0);
     };
-
-
 
     img.src = $('#hang-picture').attr('src');
     var canvas=document.getElementById("canvas");

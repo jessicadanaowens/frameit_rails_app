@@ -10,12 +10,6 @@ feature "User can hang a photo" do
       image = page.find('img#hang-picture')
       expect(image).to_not be_nil
     end
-
-    fill_in "wall_description", :with => "beautiful room"
-    fill_in "height", :with => "60"
-    fill_in "width", :with => "72"
-    attach_file('wall_image', 'spec/photos/frame.png')
-    click_on "Create wall"
   end
 
   def upload_picture
@@ -23,9 +17,13 @@ feature "User can hang a photo" do
 
     click_on "Upload a picture to frame"
 
-    fill_in "picture_file_name", :with => "description"
-    attach_file('picture_image', 'spec/photos/frame.png')
-    click_button "Upload"
+    within('#upload-picture-form') do
+      fill_in "picture_file_name", :with => "description"
+      fill_in "Height", :with => "5"
+      fill_in "Width", :with => "6"
+      attach_file('picture_image', 'spec/photos/frame.png')
+      click_button "Upload"
+    end
 
     expect(page).to have_content "description"
   end
