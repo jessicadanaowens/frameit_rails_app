@@ -20,6 +20,8 @@ class PictureCreator
     @picture ||= Picture.new(
       :file_name=>params[:picture][:file_name],
       :image => params[:picture][:image],
+      :height => params[:picture][:height],
+      :width => params[:picture][:width],
       :user_id=> id
     )
   end

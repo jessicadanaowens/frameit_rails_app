@@ -1,5 +1,15 @@
 <div id="upload-wall-form">
   <%= form_for @wall, url: "/walls", :html => {:multipart => true} do |f| %>
+    <% if @wall.errors.any? %>
+      <div class="error_messages">
+        <ul>
+          <% for message in @wall.errors.full_messages %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
     <article class="form-fields">
 
       <p>
