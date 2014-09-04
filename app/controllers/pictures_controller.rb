@@ -40,11 +40,11 @@ class PicturesController < ApplicationController
 
   def show
     @picture = Picture.find(params[:id])
-
-    #has many through
-    #active record join tables
-    #active records includes
-    #json render nested object
+    canvas_width = 200
+    picture_width = @picture.width.to_i
+    @pixels_per_inch = canvas_width / picture_width
+    @canvas_height = @picture.height.to_i * @pixels_per_inch
+    @picture_height = @picture.height.to_i * @pixels_per_inch
   end
 
   private
