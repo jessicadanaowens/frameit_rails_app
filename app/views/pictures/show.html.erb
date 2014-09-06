@@ -6,34 +6,28 @@
   <h1>{{frameWidth()}}</h1>
   <h1>{{pictureHeight()}}</h1>
   <h1><%=@picture_height%></h1>
-    <h1><%=@pixels_per_inch%></h1>
+  <h1><%=@pixels_per_inch%></h1>
 
-    <section class="work-table">
-      <article class="image-on-table">
-        <%= image_tag @picture.image.url %>
-      </article>
-    </section>
+   <!--<section class="frame-slider">-->
 
-    <!--<canvas style="background-image: url('<%=@picture.image.url%>'); background-repeat: no-repeat; background-size: cover;" id = "can" width="<%=@canvas_width%> + " height="<%=@canvas_height%>"></canvas>-->
-    <!--<canvas style="background-image: url('{{currentImage()}}'); background-size: 100%; background-repeat: no-repeat;" id = "first-canvas" width="{{imageLength()}}"></canvas>-->
+     <!--<button ng-click="previousFrame()">&larr;</button>-->
+     <!--<button ng-click="nextFrame()">&rarr;</button>-->
 
-    <%= image_tag "", {class: "frame", "ng-src" => "{{currentImage()}}"} %>
+     <!--<div id="picture-canvas" style="width:200px; height:<%=@canvas_height%>px; ">-->
 
-    <button ng-click="previousFrame()">&larr;</button>
-    <button ng-click="nextFrame()">&rarr;</button>
+      <!--<img style="width:{{pictureWidth()}}px; height:{{pictureHeight()}}px;" id="picture" src=<%=@picture.image.url%>>-->
 
-    <div id="picture-canvas" style="width:200px; height:<%=@canvas_height%>px; ">
-      <img style="width:{{pictureWidth()}}px; height:{{pictureHeight()}}px;" id="picture" src=<%=@picture.image.url%>>
+      <!--<img style="width:{{frameLength()}}px; height:{{frameWidth()}}px;" id="top-piece"  src= {{currentImage()}} >-->
 
-      <img style="width:{{frameLength()}}px; height:{{frameWidth()}}px;" id="top-piece"  src= {{currentImage()}} >
+      <!--<img style="width:{{frameLength()}}px; height:{{frameWidth()}}px; left:{{leftPieceXposition()}}px; bottom: <%=@canvas_height.to_i / 4 %>px;" id="right-piece" src= {{currentImage()}} >-->
 
-      <img style="width:{{frameLength()}}px; height:{{frameWidth()}}px;" id="right-piece" src= {{currentImage()}} >
+      <!--<img style="width:{{frameLength()}}px; height:{{frameWidth()}}px;" id="bottom-piece" src= {{currentImage()}} >-->
 
-      <img style="width:{{frameLength()}}px; height:{{frameWidth()}}px;" id="bottom-piece" src= {{currentImage()}} >
+      <!--<img style="width:{{frameLength()}}px; height:{{frameWidth()}}px; right:{{leftPieceXposition()}}px; bottom: <%=@canvas_height.to_i / 4 %>px;" id="left-piece" src= {{currentImage()}} >-->
+     <!--</div>-->
 
-      <img style="width:{{frameLength()}}px; height:{{frameWidth()}}px;" id="left-piece" src= {{currentImage()}} >
-      </div>
-  </div>
+   <!--</section>-->
+
   </div>
 </container>
 
@@ -59,6 +53,10 @@
         if ($scope.frames.length > 0) {
           return $scope.frames[$scope.frameIndex].width * <%=@pixels_per_inch%>;
         }
+      };
+
+      $scope.leftPieceXposition = function () {
+        return 100 + <%= @pixels_per_inch%>;
       };
 
       $scope.pictureWidth = function () {

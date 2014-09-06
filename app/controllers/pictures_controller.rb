@@ -39,12 +39,14 @@ class PicturesController < ApplicationController
   end
 
   def show
+
     @picture = Picture.find(params[:id])
     canvas_width = 200
     picture_width = @picture.width.to_i
     @pixels_per_inch = canvas_width / picture_width
     @canvas_height = @picture.height.to_i * @pixels_per_inch
     @picture_height = @picture.height.to_i * @pixels_per_inch
+
   end
 
   private
