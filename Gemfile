@@ -33,5 +33,6 @@ gem 'bourbon'
 gem 'neat'
 gem 'bitters'
 gem 'sass'
+gem 'rmagick'
 
 
