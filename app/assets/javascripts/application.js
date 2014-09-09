@@ -21,7 +21,6 @@ $(document).ready(function() {
 
   forms();
 
-
   var menu = $('#navigation-menu');
   var menuToggle = $('#js-mobile-menu');
   var signUp = $('.sign-up');

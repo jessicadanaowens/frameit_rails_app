@@ -1,10 +1,51 @@
 <section class="enter">
   <article class="enter-button">
     <% if current_user %>
-      <p><%= link_to "Upload a picture to frame", pictures_path %></p>
-      <% else %>
-      <p><%= button_to "Upload a picture to frame", create_guest_path, method: :post %></p>
+      <div class="homepage-link"><%= link_to "Upload a picture to frame", pictures_path %></div>
+    <% else %>
+      <%= button_to "Upload a picture to frame", create_guest_path, method: :post %>
     <% end %>
   </article>
 </section>
 
+<div class="three-columns">
+  <div class="three-column-one"></div>
+  <div class="three-column-two"></div>
+  <div class="three-column-three"></div>
+</div>
+
+
+
+<div class="cards">
+  <% @pictures.each_with_index do |picture, index| %>
+
+    <% if index % 3 == 0 %>
+      <script>
+        $('.three-column-one').append("<div class='card card-on-homepage'><div class='card-image'><img src='<%= picture.image.url %>' alt=''></div><div class='card-header'><%= picture.file_name %></div></div>")
+      </script>
+      <% elsif index % 3 == 1 %>
+      <script>
+     $('.three-column-two').append("<div class='card card-on-homepage'>" +
+        "<div class='card-image'>" +
+          "<img src='<%= picture.image.url %>' alt=''>" +
+          "</div>" +
+        "<div class='card-header'>" +
+          "<%= picture.file_name %>" +
+          "</div>" +
+        "</div>")
+      </script>
+    <% elsif index % 3 == 2 %>
+      <script>
+        $('.three-column-three').append("<div class='card card-on-homepage'>" +
+          "<div class='card-image'>" +
+          "<img src='<%= picture.image.url %>' alt=''>" +
+          "</div>" +
+          "<div class='card-header'>" +
+          "<%= picture.file_name %>" +
+          "</div>" +
+          "</div>")
+      </script>
+      <% end %>
+  <% end %>
+</div>
+</div>
