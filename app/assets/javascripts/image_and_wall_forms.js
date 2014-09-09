@@ -10,18 +10,26 @@ var forms = function() {
 
   pictureFormButton.on('click', function (e) {
     e.preventDefault();
-    pictureFormButton.css("font-weight","Bold");
-    wallFormButton.css("font-weight","");
-    uploadPictureForm.show();
-    uploadWallForm.hide();
+    if ($('#upload-picture-form').is(":visible")) {
+      uploadPictureForm.hide();
+    } else {
+      pictureFormButton.css("font-weight", "Bold");
+      wallFormButton.css("font-weight", "");
+      uploadPictureForm.show();
+      uploadWallForm.hide();
+    }
   });
 
   wallFormButton.on('click', function (e) {
     e.preventDefault();
-    wallFormButton.css("font-weight","Bold");
-    pictureFormButton.css("font-weight","");
-    uploadPictureForm.hide();
-    uploadWallForm.show();
+    if ($('#upload-wall-form').is(":visible")) {
+      uploadWallForm.hide();
+    } else {
+      wallFormButton.css("font-weight", "Bold");
+      pictureFormButton.css("font-weight", "");
+      uploadPictureForm.hide();
+      uploadWallForm.show();
+    }
   });
 };
 
