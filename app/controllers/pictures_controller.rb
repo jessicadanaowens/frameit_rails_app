@@ -6,6 +6,7 @@ class PicturesController < ApplicationController
   def index
     @picture = Picture.new
     @wall = Wall.new
+    @shares = Share.select(:picture_id).map(&:picture_id)
 
   end
 
@@ -84,6 +85,35 @@ class PicturesController < ApplicationController
     img = rvg.draw
     img.format = params[:format].upcase
     send_data img.to_blob
+  end
+
+  def share_picture
+    def user_id
+      if session[:guest_user_id]
+        session[:guest_user_id]
+      else
+        session[:user_id]
+      end
+    end
+
+    share = Share.new(
+      :user_id => user_id,
+      :picture_id => params[:id]
+    )
+
+    if share.save
+      flash[:message] = "Thank you for sharing"
+      redirect_to pictures_path
+    else
+      redirect_to pictures_path
+    end
+  end
+
+  def delete_share
+    puts "*" * 80
+    @share = Share.where(:picture_id => params[:id])
+    @share.destroy_all
+    redirect_to pictures_path
   end
 
   private

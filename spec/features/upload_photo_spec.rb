@@ -22,6 +22,16 @@ feature "User can upload a photo" do
     expect(page).to have_content "a different description"
   end
 
+  scenario "User can share a photo" do
+    upload_picture
+
+    click_on "share"
+    # expect(page).to have_content("don't share it")
+    #
+    # click_on "don't share"
+    # expect(page).have_content("share")
+  end
+
   scenario "User can hang a photo" do
     upload_picture
 
