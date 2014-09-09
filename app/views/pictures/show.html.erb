@@ -1,12 +1,8 @@
 <container ng-app="frameApp">
   <div ng-controller="FrameController">
 
+
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.18/angular.min.js"></script>
-  <h1>{{pictureWidth()}}</h1>
-  <h1>{{frameWidth()}}</h1>
-  <h1>{{pictureHeight()}}</h1>
-  <h1><%=@picture_height%></h1>
-    <h1><%=@pixels_per_inch%></h1>
 
     <section class="work-table">
       <article class="image-on-table">
@@ -14,80 +10,38 @@
       </article>
     </section>
 
-    <!--<canvas style="background-image: url('<%=@picture.image.url%>'); background-repeat: no-repeat; background-size: cover;" id = "can" width="<%=@canvas_width%> + " height="<%=@canvas_height%>"></canvas>-->
-    <!--<canvas style="background-image: url('{{currentImage()}}'); background-size: 100%; background-repeat: no-repeat;" id = "first-canvas" width="{{imageLength()}}"></canvas>-->
-
-    <%= image_tag "", {class: "frame", "ng-src" => "{{currentImage()}}"} %>
-
     <button ng-click="previousFrame()">&larr;</button>
     <button ng-click="nextFrame()">&rarr;</button>
 
-    <div id="picture-canvas" style="width:200px; height:<%=@canvas_height%>px; ">
-      <img style="width:{{pictureWidth()}}px; height:{{pictureHeight()}}px;" id="picture" src=<%=@picture.image.url%>>
-
-      <img style="width:{{frameLength()}}px; height:{{frameWidth()}}px;" id="top-piece"  src= {{currentImage()}} >
-
-      <img style="width:{{frameLength()}}px; height:{{frameWidth()}}px;" id="right-piece" src= {{currentImage()}} >
-
-      <img style="width:{{frameLength()}}px; height:{{frameWidth()}}px;" id="bottom-piece" src= {{currentImage()}} >
-
-      <img style="width:{{frameLength()}}px; height:{{frameWidth()}}px;" id="left-piece" src= {{currentImage()}} >
-      </div>
-  </div>
+    <%= image_tag "", {class: "frame", "ng-src"=> "{{currentImage()}}"}%>
   </div>
 </container>
 
 <script>
 
   angular.module('frameApp', [])
-    .controller('FrameController', ['$scope', '$http', function ($scope, $http) {
+    .controller('FrameController', ['$scope', '$http', function($scope, $http) {
       $scope.frames = [];
-      $http.get('/frames.json').success(function (data) {
+      $http.get('/frames.json').success(function(data){
         $scope.frames = data;
 
       });
-
       $scope.frameIndex = 0;
-
-      $scope.frameLength = function () {
-        if ($scope.frames.length > 0) {
-          return $scope.frames[$scope.frameIndex].length * <%=@pixels_per_inch%>;
-        }
-      };
-
-      $scope.frameWidth = function () {
-        if ($scope.frames.length > 0) {
-          return $scope.frames[$scope.frameIndex].width * <%=@pixels_per_inch%>;
-        }
-      };
-
-      $scope.pictureWidth = function () {
-        if ($scope.frames.length > 0) {
-          return 200 - $scope.frameWidth() * 2;
-        }
-      };
-
-      $scope.pictureHeight = function () {
-        if ($scope.frames.length > 0) {
-          return <%=@canvas_height%> - $scope.frameWidth() * 2;
-        }
-      };
-
-      $scope.currentImage = function () {
+      $scope.currentImage = function() {
         if ($scope.frames.length > 0) {
           return $scope.frames[$scope.frameIndex].image.url;
         }
       };
 
-      $scope.nextFrame = function () {
-        if ($scope.frameIndex < $scope.frames.length) {
-          $scope.frameIndex += 1;
-        } else {
+      $scope.nextFrame = function() {
+        if ($scope.frameIndex + 1 >= $scope.frames.length) {
           $scope.frameIndex = 0;
+        } else {
+          $scope.frameIndex += 1;
         }
       };
 
-      $scope.previousFrame = function () {
+      $scope.previousFrame = function() {
         if ($scope.frameIndex - 1 < 0) {
           $scope.frameIndex = $scope.frames.length - 1;
         } else {
@@ -97,7 +51,6 @@
 
     }]);
 </script>
-
 
 
 
