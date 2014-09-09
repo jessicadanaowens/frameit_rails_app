@@ -27,6 +27,8 @@ class PicturesController < ApplicationController
   end
 
   def destroy
+    @share = Share.where(:picture_id => params[:id])
+    @share.destroy_all if @share
     @picture = Picture.find(params[:id])
     @picture.destroy
     redirect_to pictures_path
@@ -110,7 +112,6 @@ class PicturesController < ApplicationController
   end
 
   def delete_share
-    puts "*" * 80
     @share = Share.where(:picture_id => params[:id])
     @share.destroy_all
     redirect_to pictures_path
