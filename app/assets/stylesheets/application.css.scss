@@ -18,84 +18,10 @@
   margin-right: 200px;
   margin-left: 200px;
 }
-.enter {
-  padding: 50px;
-}
-.homepage-link {
-  a {
-    color: white;
-  }
-  background-color: #a25d8f;
-  border-radius: 0.1875em;
-  color: white;
-  display: inline-block;
-  font-size: 1em;
-  font-weight: bold;
-  line-height: 1;
-  padding: .75em 1em;
-  text-decoration: none;
-
-link:hover {
-  background-color: #714164;
-  color: white;
-}
-}
-
 
 .navigation {
  opacity: .85;
 }
-
-.three-columns {
-  @include span-columns(12);
-
-  .three-column-one {
-    @include media(min-width 769px) {
-      @include span-columns(4 of 12);
-      .card-on-homepage {
-        @include span-columns(12 of 12);
-      }
-    }
-    @include media(max-width 200px) {
-      @include span-columns(12);
-    }
-  }
-  .three-column-two {
-    @include media(min-width 769px) {
-      @include span-columns(4 of 12);
-      .card-on-homepage {
-        @include span-columns(12 of 12);
-      }
-    }
-    @include media(max-width 200px) {
-      @include span-columns(12);
-    }
-  }
-  .three-column-three {
-    @include media(min-width 769px) {
-      @include span-columns(4 of 12);
-      .card-on-homepage {
-        @include span-columns(12 of 12);
-      }
-    }
-    @include media(max-width 200px) {
-      @include span-columns(12);
-    }
-  }
-}
-
-//.three-column-one {
-//  @include span-columns(4);
-//}
-//
-//.three-column-two {
-//  @include span-columns(4);
-//}
-//
-//.three-column-three {
-//  @include span-columns(4);
-//  margin: 0;
-//}
 
 #picture-canvas {
   background-color: black;
