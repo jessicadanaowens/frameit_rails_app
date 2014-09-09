@@ -12,6 +12,16 @@
 @import "sign_in";
 @import "sign_up";
 @import "alert";
+@import "welcome_picture";
+
+.wrapper {
+  margin-right: 200px;
+  margin-left: 200px;
+}
+
+.navigation {
+ opacity: .85;
+}
 
 #picture-canvas {
   background-color: black;
@@ -22,7 +32,6 @@
 }
 
 #picture {
-
   margin: auto;
 }
 
@@ -102,13 +111,13 @@ div.container {
 .scalloped-edge {
   width: 100%;
 
+
 }
 
 body {
 
-  background-image: url("paper.png");
+  background-image: url("paper-translucent.png");
   color: #a25d8f;
-  opacity: .8;
 }
 
 input[type="submit"] {

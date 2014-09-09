@@ -10,8 +10,13 @@ Rails.application.routes.draw do
 
   root to: "home#index"
   resources :users, except: :create
+  get "pictures/image" => "pictures#image"
   resources :pictures
   resources :frames
   resources :walls
+
+  post "share_picture/:id" => "pictures#share_picture", :as => "share_picture"
+  post "unshare_picture/:id" => "pictures#delete_share", :as => "unshare_picture"
+
 
 end

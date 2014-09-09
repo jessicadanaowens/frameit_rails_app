@@ -75,30 +75,5 @@ $(document).ready(function() {
     }
   });
 
-//  frame-it canvas
-    var frameIt = function() {
-    var can = document.getElementById("can");
-    var canContext = can.getContext("2d");
-
-      canContext.fillStyle = 'rgba(255,0,0,.4)';
-      canContext.fillRect(20,20,20,80);
-      canContext.fillStyle = 'rgba(205,255,23,.4)';
-      canContext.fillRect(30,30,40,50);
-      canContext.fillStyle = 'rgba(5,255,0,.4)';
-      canContext.fillRect(40,50,80,20);
-
-//    $('.frame').load(function (evt) {
-//      frameItContext.drawImage(evt.currentTarget, 0, 0, frameItCanvas.width, 30);
-//    });
-
-    var canOne = document.getElementById("first-canvas");
-    var firstContext = canOne.getContext("2d");
-
-    canContext.drawImage(canOne, 0, 0);
-
-
-  };
-
-
-
+  hangIt();
 });
