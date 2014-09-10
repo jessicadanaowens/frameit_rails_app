@@ -17,6 +17,8 @@
 
 $(document).ready(function() {
 
+  //share an unshare a picture
+
   $('.share-it-link').on ('click', function(e) {
     e.preventDefault();
     var shareItid = $(this).parent('ul').attr("id");
@@ -40,6 +42,46 @@ $(document).ready(function() {
     });
     return false;
   });
+
+  //edit picture description
+
+
+
+  $('em.picture-description').on ('click', function() {
+    if ($('input.edit-description').is(":visible")) {
+      $('input.edit-description').hide()
+     $(this).parent('.card-header').children('input').remove();
+    } else {
+      $(this).parent('.card-header').append("<input type='text' name='description' class='edit-description'/>" + "<input type='submit' value='save' class='submit-description'>");
+
+      $('.edit-description').bind('keyup',function() {
+        debugger;
+        var newText = $(this).val();
+        var currentText = $(this).parent('.card-header').children('em.picture-description');
+        currentText.text(newText);
+        var id = $(this).parent('.card-header').parent('.card').children('.card-stats').children('ul').attr('id');
+
+        $('.submit-description').on('click', function() {
+          $.ajax({
+            type: "PATCH",
+            url: "/pictures/" + id + "",
+            dataType: "json",
+            data: {file_name: newText},
+            success: $(this).parent('.card-header').children('input').remove()
+          });
+        });
+        return false;
+      });
+    }
+  });
+
+
+
+
+
+
+
+
 
   //hide and show picture form and wall form
 

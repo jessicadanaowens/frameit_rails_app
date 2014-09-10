@@ -33,9 +33,7 @@ class PictureCreator
   def update
     @picture = Picture.find(params[:id])
     @picture.update(
-      :file_name=>params[:picture][:file_name],
-      :image => params[:picture][:image],
-      :user_id=>id
+      :file_name=>params[:file_name]
     )
   end
 
