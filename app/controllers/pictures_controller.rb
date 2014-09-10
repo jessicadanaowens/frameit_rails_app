@@ -39,6 +39,7 @@ class PicturesController < ApplicationController
   end
 
   def update
+    params
     picture_creator = PictureCreator.new(session, params)
     picture_creator.update
     redirect_to pictures_path
