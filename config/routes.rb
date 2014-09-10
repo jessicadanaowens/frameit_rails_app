@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   resources :walls
 
   post "share_picture/:id" => "pictures#share_picture", :as => "share_picture"
-  post "unshare_picture/:id" => "pictures#delete_share", :as => "unshare_picture"
+  delete "unshare_picture/:id" => "pictures#delete_share", :as => "unshare_picture"
 
 
 end

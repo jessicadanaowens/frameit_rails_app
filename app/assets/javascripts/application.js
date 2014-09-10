@@ -17,6 +17,30 @@
 
 $(document).ready(function() {
 
+  $('.share-it-link').on ('click', function(e) {
+    e.preventDefault();
+    var shareItid = $(this).parent('ul').attr("id");
+      $.ajax({
+        type: "POST",
+        url: "/share_picture/" + shareItid,
+        dataType: "json",
+        success: $(this).text("don't share").addClass("dont-share-link")
+      });
+    return false;
+  });
+
+  $('.unshare-it-link').on ('click', function(e) {
+    e.preventDefault();
+    var unshareItid = $(this).parent('ul').attr("id");
+    $.ajax({
+      type: "DELETE",
+      url: "/unshare_picture/" + unshareItid,
+      dataType: "json",
+      success: $(this).text("share it").addClass("dont-share-link")
+    });
+    return false;
+  });
+
   //hide and show picture form and wall form
 
   forms();
