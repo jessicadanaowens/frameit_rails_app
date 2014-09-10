@@ -57,6 +57,7 @@ class PicturesController < ApplicationController
   def image
     # FIXME: This needs to grab a real URL
     # FIXME: This belongs in its own controller
+    RVG::dpi = 72
     frame_pieces = Image.read(Rails.root.join("app", "assets", "images", "ScallopedBorder.png"))
     rvg = RVG.new(5.in, 5.in) do |canvas|
       canvas.background_fill = 'white'
