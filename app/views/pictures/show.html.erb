@@ -25,14 +25,23 @@
     .controller('FrameController', ['$scope', '$http', function($scope, $http) {
       $scope.frames = [];
       $http.get('/frames.json').success(function(data){
-        $scope.frames = data;
 
+        $.each(data, function(i, frame) {
+          if (frame['length'] == <%=@picture.width %>) {
+            $scope.frames.push(frame);
+          }
+        });
       });
+
       $scope.frameIndex = 0;
       $scope.currentImage = function() {
         if ($scope.frames.length > 0) {
           return $scope.frames[$scope.frameIndex].image.url;
         }
+      };
+
+      $scope.frameHeight = function() {
+        return $scope.frames[$scope.frameIndex].height;
       };
 
       $scope.nextFrame = function() {
