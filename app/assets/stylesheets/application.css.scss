@@ -13,6 +13,7 @@
 @import "sign_up";
 @import "alert";
 @import "welcome_picture";
+@import "wrapper";
 
 .frame-button {
   margin: auto;
@@ -39,10 +40,6 @@ section.work-table img {
 
 .frame {
   margin-top: 100px;
-}
-.wrapper {
-  margin-right: 200px;
-  margin-left: 200px;
 }
 
 .navigation {

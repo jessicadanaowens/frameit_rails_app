@@ -1,16 +1,3 @@
-div.cards {
-//  @include span-columns(12);
-  @include outer-container;
-
-  div.card {
-    @include span-columns(3 of 12);
-    @include media(max-width 320px) {
-      @include span-columns(12);
-    }
-  }
-}
-
-
 .cards {
   @include clearfix;
 }
