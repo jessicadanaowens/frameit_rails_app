@@ -5,19 +5,19 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.18/angular.min.js"></script>
 
     <section class="work-table">
-      <article class="image-on-table">
-        <%= image_tag @picture.image.url %>
-      </article>
-    </section>
 
+        <%= image_tag @picture.image.url %>
+
+      <%= image_tag "", {class: "frames", "ng-src"=> "{{currentImage()}}"}%>
+
+    </section>
+    <div class="frame-button">
     <button ng-click="previousFrame()">&larr;</button>
     <button ng-click="nextFrame()">&rarr;</button>
-
-    <%= image_tag "", {class: "frame", "ng-src"=> "{{currentImage()}}"}%>
+    </div>
   </div>
 </container>
 
-<img src="/pictures/image.png" />
 
 <script>
 
