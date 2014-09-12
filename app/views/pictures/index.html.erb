@@ -25,20 +25,19 @@
               <em class="picture-description"><%= picture.file_name %></em>
             </div>
             <div class="card-stats">
-              <ul id="<%= picture.id %>">
+              <ul data-id="<%= picture.id %>">
                 <li><span><%= link_to "remove", picture, :method => :delete %></span></li>
                 <li><span><%= link_to "frame it", picture_path(picture) %></span></li>
                 <li><span><%= link_to "hang it", hang_it_path(picture) %></span></li>
                 <% if @shares.include?(picture.id) == true %>
-                    <li class="unshare-it-link" id="<%= picture.id %>">
-                      <span><%= link_to "unshare", unshare_picture_path(picture), method: :post%></span>
-                    </li>
-                  <% else %>
-                    <li class="share-it-link">
-                      <span data-id="share-it"><%= link_to "share ", share_picture_path(picture), method: :post %></span>
-                    </li>
-                  <% end %>
-
+                  <li id="<%= picture.id %>">
+                    <span><%= link_to "unshare", unshare_picture_path(picture), class: "share-it-link unshare"%></span>
+                  </li>
+                <% else %>
+                  <li>
+                    <span><%= link_to "share", share_picture_path(picture), class: "share-it-link share" %></span>
+                  </li>
+                <% end %>
               </ul>
             </div>
           </div>

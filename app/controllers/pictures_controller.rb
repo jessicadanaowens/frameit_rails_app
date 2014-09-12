@@ -106,17 +106,22 @@ class PicturesController < ApplicationController
     )
 
     if share.save
-      flash[:message] = "Thank you for sharing"
-      redirect_to pictures_path
+      respond_to do |format|
+        format.json { render :json => {}}
+      end
     else
-      redirect_to pictures_path
+      raise "error"
     end
   end
 
   def delete_share
     @share = Share.where(:picture_id => params[:id])
     @share.destroy_all
-    redirect_to pictures_path
+
+    respond_to do |format|
+      format.json { render :json => {} }
+    end
+
   end
 
   private
