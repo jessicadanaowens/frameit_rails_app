@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(version: 20140912220725) do
   end
 
   create_table "pictures", force: true do |t|
-    t.string   "file_name",  default: "add description"
+    t.string   "file_name",  default: "+"
     t.string   "url"
     t.integer  "user_id"
     t.datetime "created_at"
