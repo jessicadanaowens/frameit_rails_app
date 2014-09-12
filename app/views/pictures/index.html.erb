@@ -1,9 +1,9 @@
 <div class="container">
   <section class="picture-form">
     <article class="form-fields">
-      <p id="picture-form-button"><%= link_to "Select a picture to frame" %></p>
+      <p id="picture-form-button"><%= link_to "Select a picture to frame" %><em class = 'right-triangle'> &#9654;</em><em class= 'down-triangle'>&#9660;</em></p>
 
-      <p id="wall-form-button"><%= link_to "Create a wall to hang your picture on" %></p>
+      <p id="wall-form-button"><%= link_to "Create a wall to hang your picture on" %> <em class = 'right-triangle'> &#9654;</em><em class= 'down-triangle'>&#9660;</em></p>
     </article>
     <%= render "pictures/picture_form" %>
     <%= render "pictures/wall_form" %>
