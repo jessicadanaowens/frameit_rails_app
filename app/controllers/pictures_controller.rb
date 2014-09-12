@@ -31,7 +31,10 @@ class PicturesController < ApplicationController
     @share.destroy_all if @share
     @picture = Picture.find(params[:id])
     @picture.destroy
-    redirect_to pictures_path
+
+    respond_to do |format|
+      format.json { render :json => {}}
+    end
   end
 
   def edit
