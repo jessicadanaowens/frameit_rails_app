@@ -13,7 +13,7 @@ var forms = function() {
 
   pictureFormButton.on('click', function (e) {
     e.preventDefault();
-    debugger
+
     if ($('#upload-picture-form').is(":visible")) {
       uploadPictureForm.hide();
       $(this).children('em.down-triangle').hide();
@@ -23,6 +23,9 @@ var forms = function() {
     } else {
       $(this).children('em.down-triangle').show();
       $(this).children('em.right-triangle').hide();
+      debugger
+      $('#wall-form-button').children('em.right-triangle').show();
+      $('#wall-form-button').children('em.down-triangle').hide();
       pictureFormButton.css("font-weight", "Bold");
       wallFormButton.css("font-weight", "");
       uploadPictureForm.show();
@@ -40,6 +43,8 @@ var forms = function() {
     } else {
       $(this).children('em.down-triangle').show();
       $(this).children('em.right-triangle').hide();
+      $('#picture-form-button').children('em.right-triangle').show();
+      $('#picture-form-button').children('em.down-triangle').hide();
       wallFormButton.css("font-weight", "Bold");
       pictureFormButton.css("font-weight", "");
       uploadPictureForm.hide();
