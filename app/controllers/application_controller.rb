@@ -13,7 +13,6 @@ class ApplicationController < ActionController::Base
     else
       User.find_by(id: session[:guest_user_id])
     end
-
   end
 
   def guest_user

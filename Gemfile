@@ -34,5 +34,6 @@ gem 'neat'
 gem 'bitters'
 gem 'sass'
 gem 'rmagick'
+gem 'rails_12factor'
 
 
