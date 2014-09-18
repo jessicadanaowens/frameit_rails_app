@@ -28,11 +28,11 @@ feature "User can upload a photo" do
   scenario "User can share a photo", :js => true do
     upload_picture
 
-    click_on "share"
-    # expect(page).to have_content("don't share it")
-    #
-    # click_on "don't share"
-    # expect(page).have_content("share")
+    click_on "share it"
+    expect(page).to have_content("don't share")
+
+    click_on "don't share"
+    expect(page).to have_content("share it")
   end
 
   scenario "User can hang a photo", :js => true do
