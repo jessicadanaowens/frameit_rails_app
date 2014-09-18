@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
 
-
 gem 'rails', '4.1.4'
 gem 'pg'
 gem 'sass-rails', '~> 4.0.3'
@@ -22,6 +21,7 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.0.2'
   gem 'capybara', '~> 2.4.1'
   gem 'jasmine'
+  gem 'selenium-webdriver'
 end
 
 gem 'carrierwave', '~> 0.10.0'
@@ -35,5 +35,7 @@ gem 'bitters'
 gem 'sass'
 gem 'rmagick'
 gem 'rails_12factor'
+gem 'pry-byebug'
+gem 'pry-rails'
 
 

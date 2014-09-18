@@ -15,21 +15,21 @@
 
 //= require_tree .
 
-$(document).ready(function() {
+$(document).ready(function () {
 
   //delete a picture
 
-  $('.delete-picture').on ('click', function(e) {
+  $('.delete-picture').on('click', function (e) {
     debugger;
     e.preventDefault();
     var $el = $(this);
-    var pictureId= $el.parents('ul').first().data("id");
-    var picture= $el.parents('div.card');
+    var pictureId = $el.parents('ul').first().data("id");
+    var picture = $el.parents('div.card');
     $.ajax({
       type: "DELETE",
       url: "/pictures/" + pictureId,
       dataType: "json",
-      success: function() {
+      success: function () {
         picture.hide();
       }
     });
@@ -37,18 +37,18 @@ $(document).ready(function() {
 
   //share an unshare a picture
 
-  $('.share-it-link').on ('click', function(e) {
+  $('.share-it-link').on('click', function (e) {
     e.preventDefault();
     var $el = $(this);
-    var pictureId= $el.parents('ul').first().data("id");
+    var pictureId = $el.parents('ul').first().data("id");
     console.log(pictureId);
 
-    if  ($el.hasClass('share')) {
+    if ($el.hasClass('share')) {
       $.ajax({
         type: "POST",
         url: "/share_picture/" + pictureId,
         dataType: "json",
-        success: function() {
+        success: function () {
           $el.text("don't share").addClass("unshare").removeClass('share');
         }
       });
@@ -57,7 +57,7 @@ $(document).ready(function() {
         type: "DELETE",
         url: "/unshare_picture/" + pictureId,
         dataType: "json",
-        success: function() {
+        success: function () {
           console.log("whatever");
           $el.text("share it").addClass("share").removeClass('unshare');
         }
@@ -68,39 +68,36 @@ $(document).ready(function() {
 
   //edit picture description
 
-  $('em.picture-description').on ('click', function() {
+  $('em.picture-description').on('click', function () {
     if ($('input.edit-description').is(":visible")) {
-      $('input.edit-description').hide()
-     $(this).parent('.card-header').children('input').remove();
+      $('input.edit-description').hide();
+      $(this).parent('.card-header').children('input').remove();
     } else {
       $(this).parent('.card-header').append("<input type='text' name='description' class='edit-description'/>" + "<input type='submit' value='save' class='submit-description'>");
-
-      $('.edit-description').bind('keyup',function() {
-        debugger;
-        var newText = $(this).val();
-        var currentText = $(this).parent('.card-header').children('em.picture-description');
-        currentText.text(newText);
-        var id = $(this).parent('.card-header').parent('.card').children('.card-stats').children('ul').attr('id');
-
-        $('.submit-description').on('click', function() {
-          $.ajax({
-            type: "PATCH",
-            url: "/pictures/" + id + "",
-            dataType: "json",
-            data: {file_name: newText},
-            success: $(this).parent('.card-header').children('input').remove()
-          });
-        });
-        return false;
-      });
     }
   });
 
+  $('body').on('keyup', 'input.edit-description', function () {
+    var newText = $(this).val();
+    var currentText = $(this).parent('.card-header').children('em.picture-description');
+    currentText.text(newText);
+  });
 
+    $('body').on('click', '.submit-description', function () {
 
-
-
-
+      var newText = $(this).parent(".card-header").children("em").text();
+      var id = $(this).parent('.card-header').parent('.card').data("id");
+      $.ajax({
+        type: "PATCH",
+        url: "/pictures/" + id,
+        dataType: "json",
+        data: {file_name: newText},
+        success: function() {
+          $('input.edit-description').remove();
+          $('input.submit-description').remove();
+        }
+      });
+    });
 
 
 
@@ -113,10 +110,10 @@ $(document).ready(function() {
   var menuToggle = $('#js-mobile-menu');
   var signUp = $('.sign-up');
 
-  $(menuToggle).on('click', function(e) {
+  $(menuToggle).on('click', function (e) {
     e.preventDefault();
-    menu.slideToggle(function(){
-      if(menu.is(':hidden')) {
+    menu.slideToggle(function () {
+      if (menu.is(':hidden')) {
         menu.removeAttr('style');
       }
     });
@@ -124,8 +121,8 @@ $(document).ready(function() {
 
 
   // underline under the active nav item
-  $(".nav .nav-link").click(function() {
-    $(".nav .nav-link").each(function() {
+  $(".nav .nav-link").click(function () {
+    $(".nav .nav-link").each(function () {
       $(this).removeClass("active-nav-item");
     });
     $(this).addClass("active-nav-item");
@@ -133,11 +130,11 @@ $(document).ready(function() {
   });
 
   //accordion
-  $('.accordion-tabs').each(function(index) {
+  $('.accordion-tabs').each(function (index) {
     $(this).children('li').first().children('a').addClass('is-active').next().addClass('is-open').show();
   });
 
-  $('.accordion-tabs').on('click', 'li > a', function(event) {
+  $('.accordion-tabs').on('click', 'li > a', function (event) {
     if (!$(this).hasClass('is-active')) {
       event.preventDefault();
       var accordionTabs = $(this).closest('.accordion-tabs')
@@ -156,7 +153,7 @@ $(document).ready(function() {
     var alert = $('.alert');
     if (alert.length > 0) {
       alert.show().animate({height: alert.outerHeight()}, 200);
-      window.setTimeout(function() {
+      window.setTimeout(function () {
         alert.slideUp();
       }, 3000);
     }

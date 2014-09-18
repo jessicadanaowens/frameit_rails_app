@@ -30,11 +30,4 @@ class PictureCreator
     @saved = picture.save
   end
 
-  def update
-    @picture = Picture.find(params[:id])
-    @picture.update(
-      :file_name=>params[:file_name]
-    )
-  end
-
 end

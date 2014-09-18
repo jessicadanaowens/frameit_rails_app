@@ -42,10 +42,13 @@ class PicturesController < ApplicationController
   end
 
   def update
-    params
-    picture_creator = PictureCreator.new(session, params)
-    picture_creator.update
-    redirect_to pictures_path
+    @picture = Picture.find(params[:id])
+    @picture.update(
+      :file_name=>params[:file_name]
+    )
+    respond_to do |format|
+      format.json { render :json => {} }
+    end
   end
 
   def show

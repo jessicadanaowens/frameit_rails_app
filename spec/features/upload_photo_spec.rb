@@ -1,7 +1,7 @@
 require "rails_helper"
 
 feature "User can upload a photo" do
-  scenario "succesfully" do
+  scenario "succesfully", :js => true do
     upload_picture
 
     within('.accordion-tabs') do
@@ -11,18 +11,21 @@ feature "User can upload a photo" do
     end
   end
 
-  scenario "User can edit a photo" do
+  scenario "User can edit the description of a photo", :js => true do
     upload_picture
 
-    click_on "edit"
+    expect(find('em.picture-description').text).to eq("description")
 
-    fill_in "picture_file_name", :with => "a different description"
-    click_button "Update Picture"
+    within(".cards") do
+      find('em.picture-description').click
+      fill_in "description", :with => "a different description"
+      click_button "save"
+    end
 
     expect(page).to have_content "a different description"
   end
 
-  scenario "User can share a photo" do
+  scenario "User can share a photo", :js => true do
     upload_picture
 
     click_on "share"
@@ -32,30 +35,26 @@ feature "User can upload a photo" do
     # expect(page).have_content("share")
   end
 
-  scenario "User can hang a photo" do
+  scenario "User can hang a photo", :js => true do
     upload_picture
 
     click_on "hang it"
-
-    within('#room') do
-      image = page.find('img#hang-picture')
-      expect(image).to_not be_nil
-    end
   end
 
   def upload_picture
-    visit root_url
+    visit "/"
 
     click_on "Upload a picture to frame"
 
-    within('#upload-picture-form') do
-      fill_in "picture_file_name", :with => "description"
-      fill_in "Height", :with => "5"
-      fill_in "Width", :with => "6"
-      attach_file('picture_image', 'spec/photos/frame.png')
-      click_button "Upload"
-    end
-    expect(page).to have_content "description"
+    click_on "Select a picture to frame"
+
+      within('#upload-picture-form') do
+        fill_in "picture[file_name]", :with => "description"
+        fill_in "Height", :with => "5"
+        fill_in "Width", :with => "6"
+        attach_file('picture_image', Rails.root + 'spec/photos/frame.png')
+        click_button "Upload"
+      end
   end
 
 end
