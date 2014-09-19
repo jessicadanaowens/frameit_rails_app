@@ -18,7 +18,7 @@ feature "User can hang a photo" do
     click_on "Upload a picture to frame"
 
     within('#upload-picture-form') do
-      fill_in "picture_file_name", :with => "description"
+      fill_in "picture_description", :with => "description"
       fill_in "Height", :with => "5"
       fill_in "Width", :with => "6"
       attach_file('picture_image', 'spec/photos/frame.png')

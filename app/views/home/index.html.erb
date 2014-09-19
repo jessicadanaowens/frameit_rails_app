@@ -21,7 +21,7 @@
 
     <% if index % 3 == 0 %>
       <script>
-        $('.three-column-one').append("<div class='card card-on-homepage'><div class='card-image'><img src='<%= picture.image.url %>' alt=''></div><div class='card-header'><%= picture.file_name %></div></div>")
+        $('.three-column-one').append("<div class='card card-on-homepage'><div class='card-image'><img src='<%= picture.image.url %>' alt=''></div><div class='card-header'><%= picture.description %></div></div>")
       </script>
       <% elsif index % 3 == 1 %>
       <script>
@@ -30,7 +30,7 @@
           "<img src='<%= picture.image.url %>' alt=''>" +
           "</div>" +
         "<div class='card-header'>" +
-          "<%= picture.file_name %>" +
+          "<%= picture.description %>" +
           "</div>" +
         "</div>")
       </script>
@@ -41,7 +41,7 @@
           "<img src='<%= picture.image.url %>' alt=''>" +
           "</div>" +
           "<div class='card-header'>" +
-          "<%= picture.file_name %>" +
+          "<%= picture.description %>" +
           "</div>" +
           "</div>")
       </script>

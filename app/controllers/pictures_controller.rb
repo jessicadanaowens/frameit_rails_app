@@ -44,7 +44,7 @@ class PicturesController < ApplicationController
   def update
     @picture = Picture.find(params[:id])
     @picture.update(
-      :file_name=>params[:file_name]
+      :description=>params[:description]
     )
     respond_to do |format|
       format.json { render :json => {} }

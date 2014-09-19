@@ -16,14 +16,15 @@
       </p>
       <p>
         <%= f.label :height %>
-        <%= f.text_field :height, :required => true %>
+        <%= f.text_field :height, :required => true, placeholder: "ex: 30" %>
       </p>
       <p>
         <%= f.label :width %>
-        <%= f.text_field :width, :required => true %>
+        <%= f.text_field :width, :required => true, placeholder: "ex: 20"%>
       </p>
       <p>
-        <span><%= f.label :description %> <%= f.text_field :file_name %></span>
+        <%= f.label :description %>
+        <%= f.text_field :description, placeholder: "ex: self-portrait" %>
       </p>
       <%= f.submit "Upload Picture" %>
     </article>

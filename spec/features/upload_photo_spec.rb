@@ -56,7 +56,7 @@ feature "User can upload a photo" do
     click_on "Select a picture to frame"
 
       within('#upload-picture-form') do
-        fill_in "picture[file_name]", :with => "description"
+        fill_in "picture[description]", :with => "description"
         fill_in "Height", :with => "5"
         fill_in "Width", :with => "6"
         attach_file('picture_image', Rails.root + 'spec/photos/frame.png')
