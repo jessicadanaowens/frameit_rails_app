@@ -12,10 +12,10 @@
             <li class="nav-link"><%= link_to "Sign Up", sign_up_path("guest_upload") %></li>
             <li class="nav-link"><%= link_to "Sign In", sign_in_path %></li>
           <% else %>
-            <li class="nav-link">Signed in as <%=current_user.email %></li>
-            <li class="nav-link"><%= link_to "Sign Out", sign_out_path, method: :delete %></li>
             <li class="nav-link"><%= link_to "Sell Frames", frames_path %></li>
             <li class="nav-link"><%= link_to "Your Gallery", pictures_path %></li>
+            <li class="nav-link">Signed in as <%=current_user.email %></li>
+            <li class="nav-link"><%= link_to "Sign Out", sign_out_path, method: :delete %></li>
           <% end %>
         <% else %>
           <li class="nav-link"><%= link_to "Sign Up", sign_up_path("nil") %></li>

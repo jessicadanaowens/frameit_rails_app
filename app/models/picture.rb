@@ -1,8 +1,8 @@
 class Picture < ActiveRecord::Base
   mount_uploader :image, ImageUploader
   belongs_to :user
-  validates :image, :presence => { :message => "Please select a file to upload" }
-  validates :height, :presence => true, numericality: true
-  validates :width, :presence => true, numericality: true
+
+  validates_presence_of :image, :height, :width, :description
+  validates_numericality_of :height, :width
 end
 

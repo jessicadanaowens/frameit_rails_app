@@ -1,6 +1,7 @@
 class Frame < ActiveRecord::Base
-  has_many :frame_sizes
-  has_many :frame_size_joins
 
   mount_uploader :image, ImageUploader
+
+  validates_presence_of :inner_height, :inner_width, :width_of_moulding, :name, :image
+  validates_numericality_of :inner_height, :inner_width, :width_of_moulding
 end

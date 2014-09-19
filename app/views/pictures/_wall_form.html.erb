@@ -15,15 +15,16 @@
         <%= f.file_field :image, :required => true %>
       </p>
       <p>
-        <%= f.label :height %>
-        <%= f.text_field :height, :required => true %>
+        <%= f.label :name, "height (inches)" %>
+        <%= f.number_field :height, :required => true, placeholder: "ex: 64" %>
       </p>
       <p>
-        <%= f.label :width %>
-        <%= f.text_field :width, :required => true %>
+        <%= f.label :name, "width (inches)" %>
+        <%= f.number_field :width, :required => true, placeholder: "ex: 45" %>
       </p>
       <p>
-        <span><%= f.label :description %> <%= f.text_field :description %></span>
+        <%= f.label :description %>
+        <%= f.text_field :description, :required => true, placeholder: "ex: wall above couch" %>
       </p>
 
       <%= f.submit "Create Wall" %>

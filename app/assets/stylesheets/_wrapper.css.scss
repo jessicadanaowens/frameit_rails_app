@@ -1,7 +1,7 @@
 .wrapper {
   @include media(769px) {
-    margin-right: 200px;
-    margin-left: 200px;
+    margin-right: 100px;
+    margin-left: 100px;
   }
   @include media(max-width 320px) {
     .card {

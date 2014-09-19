@@ -5,16 +5,14 @@ feature "User can upload a frame to sell" do
 
     register(email: "jessica@gmail.com", password: "12345")
 
-    Frame_Size.create(:height => 10, :width => 10, :dimensions=>'10" x 10"')
-
     click_on "Sell Frames"
-
 
     attach_file('frame_image', 'spec/photos/frame.png')
 
     fill_in "Name", :with => "gilted frame"
-    fill_in "Length", :with => "36"
-    fill_in "Width", :with => "2"
+    fill_in "inner frame height (inches)", :with => 36
+    fill_in "inner frame width (inches)", :with => 36
+    fill_in "width of moulding (inches)", :with => 2
 
     click_on "Create Frame"
     expect(page).to have_content "gilted frame"

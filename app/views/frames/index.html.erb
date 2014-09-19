@@ -1,19 +1,31 @@
 <div class="container">
   <section class="picture-form">
     <%= form_for @frame, :html => {:multipart => true} do |f| %>
+      <% if @frame.errors.any? %>
+        <div class="error_messages">
+          <ul>
+            <% for message in @frame.errors.full_messages %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
 
       <article class="form-fields">
 
         <%= f.file_field :image %>
 
-        <%= f.label :name %>
+        <%= f.label :name, :required => true, placeholder: "ex: Ribba frame" %>
         <%= f.text_field :name %>
 
-        <%= f.label :length %>
-        <%= f.text_field :length %>
+        <%= f.label :name, "inner frame height (inches)", :required => true, placeholder: "ex: 10" %>
+        <%= f.number_field :inner_height %>
 
-        <%= f.label :width %>
-        <%= f.text_field :width %>
+        <%= f.label :name, "inner frame width (inches)", :required => true, placeholder: "ex: 12" %>
+        <%= f.number_field :inner_width %>
+
+        <%= f.label :name, "width of moulding (inches)", :required => true, placeholder: "ex: 2" %>
+        <%= f.number_field :width_of_moulding %>
 
         <%= f.submit %>
 
@@ -22,7 +34,7 @@
   </section>
 </div>
 
-<% current_user.frames.each do |frame| %>
+<% @frames.each do |frame| %>
   <img src="<%= frame.image.url %>" >
   <p><%= frame.name %></p>
   <ul>

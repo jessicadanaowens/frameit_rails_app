@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140919030429) do
+ActiveRecord::Schema.define(version: 20140919150808) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,8 +37,9 @@ ActiveRecord::Schema.define(version: 20140919030429) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "image"
-    t.integer  "length"
-    t.integer  "width"
+    t.integer  "inner_height"
+    t.integer  "inner_width"
+    t.integer  "width_of_moulding"
   end
 
   create_table "framesizejoins", force: true do |t|

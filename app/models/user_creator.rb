@@ -13,13 +13,4 @@ class UserCreator
   def save
     @saved = new_user.save
   end
-
-  def guest_user
-
-  end
-
-
-
-
-
 end

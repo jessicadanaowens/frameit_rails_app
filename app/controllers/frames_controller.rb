@@ -10,15 +10,22 @@ class FramesController < ApplicationController
   end
 
   def create
-    frame_creator = FrameCreator.new(params, session)
+    def user_id
+      if session[:guest_user_id]
+        session[:guest_user_id]
+      else
+        session[:user_id]
+      end
+    end
 
-    if frame_creator.save
+    @frame = Frame.new(
+      allowed_params
+    )
 
+    if @frame.save
       flash[:notice] = "Frame was successfully created"
       redirect_to frames_path
     else
-      @frame = frame_creator.frame
-      flash[:notice] = "Incorrect information"
       render :index
     end
   end
@@ -27,5 +34,11 @@ class FramesController < ApplicationController
     Frame.find(params[:id]).destroy
 
     redirect_to frames_path
+  end
+
+  private
+
+  def allowed_params
+    params.require(:frame).permit(:inner_height, :inner_width, :width_of_moulding, :name, :image)
   end
 end
