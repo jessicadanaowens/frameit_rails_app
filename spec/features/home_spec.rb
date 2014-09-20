@@ -5,7 +5,7 @@ feature "user sees pictures of art on homepage" do
     visit root_path
 
     click_on "Sign Up"
-    register(email: "jess@gmail.com", password: "12345")
+    register(email: "katie@gmail.com", password: "12345")
 
     upload_picture
     click_on "Sign Out"

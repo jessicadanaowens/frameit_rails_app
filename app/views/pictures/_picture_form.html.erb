@@ -24,7 +24,7 @@
       </p>
       <p>
         <%= f.label :description %>
-        <%= f.text_field :description, placeholder: "ex: self-portrait" %>
+        <%= f.text_field :description, :required => true, placeholder: "ex: self-portrait" %>
       </p>
       <%= f.submit "Upload Picture" %>
     </article>

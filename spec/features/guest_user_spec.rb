@@ -16,7 +16,8 @@ feature "user can enter site as a guest" do
     click_button("Upload a picture to frame")
     create_picture
     expect(page).to have_content "description"
-    register(email: "jess@gmail.com", password: "12345")
+    register(email: "chris@gmail.com", password: "12345")
+    click_on "Your Gallery"
     expect(page).to have_content "description"
   end
 
