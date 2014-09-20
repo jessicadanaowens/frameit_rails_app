@@ -6,7 +6,7 @@
 
     <section class="work-table">
 
-        <%= image_tag @picture.image.url %>
+        <%= image_tag @picture.image.url, :class =>"picture" %>
 
       <%= image_tag "", {class: "frames", "ng-src"=> "{{currentImage()}}"}%>
 

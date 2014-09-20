@@ -7,31 +7,24 @@ feature "user can enter site as a guest" do
     click_button("Upload a picture to frame")
     expect(page).to have_content("Signed in as guest")
     expect(page).to have_content("Sign In")
-
+    expect(page).to have_content("Sign Up")
   end
 
-  scenario "guest can register and have data persisted" do
+  scenario "guest can register, create a picture, and have data persisted" do
     visit root_url
+
     click_button("Upload a picture to frame")
-
-    within('#upload-picture-form') do
-      fill_in "picture_description", :with => "description"
-      fill_in "Height", :with => "5"
-      fill_in "Width", :with => "6"
-      attach_file('picture_image', 'spec/photos/frame.png')
-      click_button "Upload"
-    end
-
+    create_picture
     expect(page).to have_content "description"
+    register(email: "jess@gmail.com", password: "12345")
+    expect(page).to have_content "description"
+  end
 
-    click_on "Sign Up"
+  scenario "guest can create a wall" do
+    visit root_url
 
-    within "article.sign-up-form" do
-      fill_in "Email", :with => "email"
-      fill_in "Password", :with => "password"
-      fill_in "Password confirmation", :with => "password"
-      click_on "Register"
-    end
+    click_button("Upload a picture to frame")
+    create_wall
     expect(page).to have_content "description"
   end
 end

@@ -13,7 +13,7 @@
             <li class="nav-link"><%= link_to "Sign In", sign_in_path %></li>
           <% else %>
             <li class="nav-link"><%= link_to "Sell Frames", frames_path %></li>
-            <li class="nav-link"><%= link_to "Your Gallery", pictures_path %></li>
+            <li class="nav-link"><%= link_to "Your Gallery", user_pictures_path(current_user) %></li>
             <li class="nav-link">Signed in as <%=current_user.email %></li>
             <li class="nav-link"><%= link_to "Sign Out", sign_out_path, method: :delete %></li>
           <% end %>

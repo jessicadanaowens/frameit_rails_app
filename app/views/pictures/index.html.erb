@@ -27,7 +27,7 @@
             <div class="card-stats">
               <ul data-id="<%= picture.id %>">
                 <li><span class="delete-picture"><em>&#10008;</em> </span></li>
-                <li><span><%= link_to "frame it", picture_path(picture) %></span></li>
+                <li><span><%= link_to "frame it", user_picture_path(current_user, picture) %></span></li>
                 <li><span><%= link_to "hang it", hang_it_path(picture) %></span></li>
                 <% if @shares.include?(picture.id) == true %>
                   <li id="<%= picture.id %>">

@@ -22,7 +22,7 @@ class UsersController < ApplicationController
 
       session[:user_id] = @user.id
       if params[:source] == "guest_upload"
-        redirect_to pictures_path
+        redirect_to user_pictures_path(current_user)
       else
         redirect_to root_url
       end
@@ -43,7 +43,7 @@ class UsersController < ApplicationController
       session[:guest_user_id] = u.id
     end
 
-    redirect_to pictures_path
+    redirect_to user_pictures_path(current_user)
 
   end
 

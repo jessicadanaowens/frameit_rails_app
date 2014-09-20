@@ -9,11 +9,19 @@ Rails.application.routes.draw do
   get "hang_it/:id" => "walls#index", :as => "hang_it"
 
   root to: "home#index"
-  resources :users, except: :create
-  get "pictures/image" => "pictures#image"
-  resources :pictures
+
+  resources :users, except: :create do
+    resources :pictures, :except => [:update, :destroy]
+  end
+
+  resources :pictures, :only => [:update, :destroy]
+
   resources :frames
   resources :walls
+  # get "pictures/image" => "pictures#image"
+
+
+  get "/search" => "search#index", :as => "search"
 
   post "share_picture/:id" => "pictures#share_picture", :as => "share_picture"
   delete "unshare_picture/:id" => "pictures#delete_share", :as => "unshare_picture"

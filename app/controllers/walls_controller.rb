@@ -26,9 +26,9 @@ class WallsController < ApplicationController
 
     if @wall.save
       flash[:notice] = "Picture of room successfully uploaded"
-      redirect_to "/pictures"
+      redirect_to user_pictures_path(current_user)
     else
-      redirect_to "/pictures"
+      redirect_to user_pictures_path(current_user)
     end
   end
 

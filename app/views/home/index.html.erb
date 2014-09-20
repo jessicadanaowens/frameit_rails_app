@@ -1,7 +1,11 @@
+<script src="//cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.10.4/typeahead.bundle.min.js"></script>
+
+<input id="searchfield">
+
 <section class="enter">
   <article class="enter-button">
     <% if current_user %>
-      <div class="homepage-link"><%= link_to "Upload a picture to frame", pictures_path %></div>
+      <div class="homepage-link"><%= link_to "Upload a picture to frame", user_pictures_path(current_user) %></div>
     <% else %>
       <%= button_to "Upload a picture to frame", create_guest_path, method: :post %>
     <% end %>
@@ -49,3 +53,20 @@
   <% end %>
 </div>
 </div>
+
+<script>
+  var bestFrames = new Bloodhound({
+    datumTokenizer: Bloodhound.tokenizers.obj.whitespace('value'),
+    queryTokenizer: Bloodhound.tokenizers.whitespace,
+    remote: '/search?q=%QUERY',
+  });
+
+  bestFrames.initialize();
+
+  $('#searchfield').typeahead(null, {
+    source: bestFrames.ttAdapter()
+  });
+
+</script>
+
+

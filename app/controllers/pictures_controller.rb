@@ -18,10 +18,10 @@ class PicturesController < ApplicationController
 
     if picture_creator.save
       flash[:notice] = "Picture successfully uploaded"
-      redirect_to "/pictures"
+      redirect_to user_pictures_path(current_user)
     else
       flash[:notice] = "Please select a picture to upload"
-      redirect_to "/pictures"
+      render user_pictures_path(current_user)
     end
 
   end

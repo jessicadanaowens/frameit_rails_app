@@ -3,10 +3,6 @@ class FramesController < ApplicationController
   def index
     @frame = Frame.new
     @frames = Frame.all
-    respond_to do |format|
-      format.html
-      format.json { render :json => @frames }
-    end
   end
 
   def create
