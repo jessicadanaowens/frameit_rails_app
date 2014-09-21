@@ -17,7 +17,6 @@ class FramesController < ApplicationController
     @frame = Frame.new(
       allowed_params
     )
-
     if @frame.save
       flash[:notice] = "Frame was successfully created"
       redirect_to frames_path
@@ -29,7 +28,9 @@ class FramesController < ApplicationController
   def destroy
     Frame.find(params[:id]).destroy
 
-    redirect_to frames_path
+    respond_to do |format|
+      format.json { render :json => {}}
+    end
   end
 
   private

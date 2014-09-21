@@ -34,15 +34,45 @@
   </section>
 </div>
 
-<% if @frames %>
-  <% @frames.each do |frame| %>
-    <img src="<%= frame.image.url %>">
-    <p><%= frame.name %></p>
-    <ul>
-      <li><span><%= link_to "remove", frame, :method => :delete %></span></li>
-    </ul>
+
+
+<table class="table-minimal">
+
+  <thead>
+  <tr>
+
+    <th>Image</th>
+    <th>Name</th>
+    <th>Inner Height</th>
+    <th>Inner Width</th>
+    <th>Width of Moulding</th>
+    <th>Remove Frame</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% if @frames %>
+    <% @frames.each do |frame| %>
+
+      <tr class="frame-table-row">
+        <td><img src="<%= frame.image.url %>"></td>
+        <td><%= frame.name %></td>
+        <td><%= frame.inner_height %></td>
+        <td><%= frame.inner_width %></td>
+        <td><%= frame.width_of_moulding %></td>
+        <td>
+          <ul data-id="<%= frame.id %>">
+            <li><span class="delete-frame"><em>&#10008;</em> </span></li>
+          </ul>
+        </td>
+      </tr>
+    <% end %>
   <% end %>
-<% end %>
+
+  </tbody>
+
+</table>
+
 
 
 

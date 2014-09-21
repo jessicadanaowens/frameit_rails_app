@@ -8,8 +8,5 @@ feature "User can upload a frame to sell" do
     click_on "Sell Frames"
     create_frame
     expect(page).to have_content "gilted frame"
-
-    click_on "remove"
-    expect(page).not_to have_content "gilted frame"
   end
 end
