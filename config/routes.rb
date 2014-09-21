@@ -23,8 +23,8 @@ Rails.application.routes.draw do
 
   get "/search" => "search#index", :as => "search"
 
-  post "share_picture/:id" => "pictures#share_picture", :as => "share_picture"
-  delete "unshare_picture/:id" => "pictures#delete_share", :as => "unshare_picture"
+  post "share_picture/:id" => "shares#share_picture", :as => "share_picture"
+  delete "unshare_picture/:id" => "shares#delete_share", :as => "unshare_picture"
 
 
 end
