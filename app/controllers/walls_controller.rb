@@ -16,13 +16,8 @@ class WallsController < ApplicationController
     end
 
 
-    @wall = Wall.new(
-      :description => params[:wall][:description],
-      :height => params[:wall][:height],
-      :width => params[:wall][:width],
-      :image => params[:wall][:image],
-      :user_id => user_id
-    )
+    @wall = Wall.new(allowed_params)
+    @wall[:user_id] = user_id
 
     if @wall.save
       flash[:notice] = "Picture of room successfully uploaded"
@@ -38,6 +33,12 @@ class WallsController < ApplicationController
     respond_to do |format|
       format.json { render :json => {}}
     end
+  end
+
+  private
+
+  def allowed_params
+    params.require(:wall).permit(:description, :height, :width, :image)
   end
 
 
