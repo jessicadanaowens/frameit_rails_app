@@ -73,9 +73,9 @@
               <%= wall.description %>
             </div>
             <div class="card-stats">
-              <ul>
+              <ul data-id="<%= wall.id %>">
+                <li><span class="delete-wall"><em>&#10008;</em> </span></li>
                 <li><span><%= link_to "edit description", edit_wall_path(wall) %></span></li>
-                <li><span><%= link_to "remove", wall, :method => :delete %></span></li>
               </ul>
             </div>
           </div>

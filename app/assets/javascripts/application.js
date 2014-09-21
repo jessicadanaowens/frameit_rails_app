@@ -21,6 +21,8 @@ $(document).ready(function () {
 
   deletePicture();
 
+  deleteWall();
+
   sharePicture();
 
   //edit picture description
