@@ -17,54 +17,9 @@
 
 $(document).ready(function () {
 
-  //delete a picture
+  deletePicture();
 
-  $('.delete-picture').on('click', function (e) {
-    debugger;
-    e.preventDefault();
-    var $el = $(this);
-    var pictureId = $el.parents('ul').first().data("id");
-    var picture = $el.parents('div.card');
-    $.ajax({
-      type: "DELETE",
-      url: "/pictures/" + pictureId,
-      dataType: "json",
-      success: function () {
-        picture.hide();
-      }
-    });
-  });
-
-  //share an unshare a picture
-
-  $('.share-it-link').on('click', function (e) {
-    e.preventDefault();
-    var $el = $(this);
-    var pictureId = $el.parents('ul').first().data("id");
-    console.log(pictureId);
-
-    if ($el.hasClass('share')) {
-      $.ajax({
-        type: "POST",
-        url: "/share_picture/" + pictureId,
-        dataType: "json",
-        success: function () {
-          $el.text("don't share").addClass("unshare").removeClass('share');
-        }
-      });
-    } else {
-      $.ajax({
-        type: "DELETE",
-        url: "/unshare_picture/" + pictureId,
-        dataType: "json",
-        success: function () {
-          console.log("whatever");
-          $el.text("share it").addClass("share").removeClass('unshare');
-        }
-      });
-    }
-    return false;
-  });
+  sharePicture();
 
   //edit picture description
 
@@ -87,6 +42,7 @@ $(document).ready(function () {
 
       var newText = $(this).parent(".card-header").children("em").text();
       var id = $(this).parent('.card-header').parent('.card').data("id");
+      debugger;
       $.ajax({
         type: "PATCH",
         url: "/pictures/" + id,

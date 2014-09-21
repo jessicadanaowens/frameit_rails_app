@@ -18,13 +18,10 @@ Rails.application.routes.draw do
 
   resources :frames
   resources :walls
-  # get "pictures/image" => "pictures#image"
-
 
   get "/search" => "search#index", :as => "search"
 
   post "share_picture/:id" => "shares#share_picture", :as => "share_picture"
   delete "unshare_picture/:id" => "shares#delete_share", :as => "unshare_picture"
-
 
 end
