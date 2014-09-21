@@ -47,7 +47,7 @@ $(document).ready(function () {
         type: "PATCH",
         url: "/pictures/" + id,
         dataType: "json",
-        data: {file_name: newText},
+        data: {description: newText},
         success: function() {
           $('input.edit-description').remove();
           $('input.submit-description').remove();
@@ -55,12 +55,9 @@ $(document).ready(function () {
       });
     });
 
-
-
   //hide and show picture form and wall form
 
   forms();
-
 
   var menu = $('#navigation-menu');
   var menuToggle = $('#js-mobile-menu');
@@ -114,6 +111,4 @@ $(document).ready(function () {
       }, 3000);
     }
   });
-
-
 });
