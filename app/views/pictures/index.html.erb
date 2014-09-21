@@ -1,9 +1,11 @@
 <div class="container">
   <section class="picture-form">
     <article class="form-fields">
-      <p id="picture-form-button"><%= link_to "Select a picture to frame" %><em class = 'right-triangle'> &#9654;</em><em class= 'down-triangle'>&#9660;</em></p>
+      <p id="picture-form-button"><%= link_to "Select a picture to frame" %><em class='right-triangle'> &#9654;</em>
+        <em class='down-triangle'>&#9660;</em></p>
 
-      <p id="wall-form-button"><%= link_to "Create a wall to hang your picture on" %> <em class = 'right-triangle'> &#9654;</em><em class= 'down-triangle'>&#9660;</em></p>
+      <p id="wall-form-button"><%= link_to "Create a wall to hang your picture on" %>
+        <em class='right-triangle'> &#9654;</em><em class='down-triangle'>&#9660;</em></p>
     </article>
     <%= render "pictures/picture_form" %>
     <%= render "pictures/wall_form" %>
@@ -31,7 +33,7 @@
                 <li><span><%= link_to "hang it", hang_it_path(picture) %></span></li>
                 <% if @shares.include?(picture.id) == true %>
                   <li id="<%= picture.id %>">
-                    <span><%= link_to "unshare", unshare_picture_path(picture), class: "share-it-link unshare"%></span>
+                    <span><%= link_to "unshare", unshare_picture_path(picture), class: "share-it-link unshare" %></span>
                   </li>
                 <% else %>
                   <li>
@@ -49,13 +51,11 @@
     <a href="#" class="tab-link">Favorite Frames</a>
 
     <div class="tab-content">
-      <p>Ut laoreet augue et neque pretium non sagittis nibh pulvinar. Etiam ornare tincidunt orci quis ultrices.
-        Pellentesque ac sapien ac purus gravida ullamcorper. Duis rhoncus sodales lacus, vitae adipiscing tellus
-        pharetra sed. Praesent bibendum lacus quis metus condimentum ac accumsan orci vulputate. Aenean fringilla massa
-        vitae metus facilisis congue. Morbi placerat eros ac sapien semper pulvinar. Vestibulum facilisis, ligula a
-        molestie venenatis, metus justo ullamcorper ipsum, congue aliquet dolor tortor eu neque. Sed imperdiet, nibh ut
-        vestibulum tempor, nibh dui volutpat lacus, vel gravida magna justo sit amet quam. Quisque tincidunt ligula at
-        nisl imperdiet sagittis. Morbi rutrum tempor arcu, non ultrices sem semper a. Aliquam quis sem mi.</p>
+      <% if current_user.walls == [] %>
+        <div class="nothing-created_message">
+          <h4>You have not favorited any frames</h4>
+        </div>
+      <% end %>
     </div>
   </li>
 
@@ -64,6 +64,7 @@
 
     <div class="tab-content">
       <div class="cards">
+
         <% current_user.walls.each do |wall| %>
           <div class="card">
             <div class="card-image">
@@ -75,28 +76,19 @@
             <div class="card-stats">
               <ul data-id="<%= wall.id %>">
                 <li><span class="delete-wall"><em>&#10008;</em> </span></li>
-                <li><span><%= link_to "edit description", edit_wall_path(wall) %></span></li>
               </ul>
             </div>
+          </div>
+        <% end %>
+        <% if current_user.walls == [] %>
+          <div class="nothing-created_message">
+            <h4>You have not created any walls</h4>
           </div>
         <% end %>
       </div>
 
     </div>
   </li>
-
-
-  <li class="tab-header-and-content">
-    <a href="#" class="tab-link">Last Item</a>
-
-    <div class="tab-content">
-      <p>Sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Phasellus dui urna, mollis
-        vel suscipit in, pharetra at ligula. Pellentesque a est vel est fermentum pellentesque sed sit amet dolor. Nunc
-        in dapibus nibh. Aliquam erat volutpat. Phasellus vel dui sed nibh iaculis convallis id sit amet urna. Proin nec
-        tellus quis justo consequat accumsan. Vivamus turpis enim, auctor eget placerat eget, aliquam ut sapien.</p>
-    </div>
-  </li>
-
 </ul>
 
 

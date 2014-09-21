@@ -16,11 +16,17 @@
 @import "wrapper";
 @import "frame_table";
 
+.nothing-created_message {
+
+  text-align: center;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  color: #a25d8f;
+}
 
 header.navigation .nav {
   float: right;
 }
-
 
 .picture-description {
   color: #a25d8f;
