@@ -19,11 +19,12 @@ var editPictureDescription = function() {
 
     var newText = $(this).parent(".card-header").children("em").text();
     var id = $(this).parent('.card-header').parent('.card').data("id");
+    debugger;
     $.ajax({
       type: "PATCH",
       url: "/pictures/" + id,
       dataType: "json",
-      data: {file_name: newText},
+      data: {description: newText},
       success: function() {
         $('input.edit-description').remove();
         $('input.submit-description').remove();
