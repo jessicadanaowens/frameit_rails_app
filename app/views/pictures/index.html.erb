@@ -30,7 +30,7 @@
               <ul data-id="<%= picture.id %>">
                 <li><span class="delete-picture"><em>&#10008;</em> </span></li>
                 <li><span><%= link_to "frame it", user_picture_path(current_user, picture) %></span></li>
-                <li><span><%= link_to "hang it", hang_it_path(picture) %></span></li>
+                <li><span><%= link_to "hang it", walls_path(picture.id) %></span></li>
                 <% if @shares.include?(picture.id) == true %>
                   <li id="<%= picture.id %>">
                     <span><%= link_to "unshare", unshare_picture_path(picture), class: "share-it-link unshare" %></span>
@@ -74,9 +74,11 @@
               <%= wall.description %>
             </div>
             <div class="card-stats">
-              <ul data-id="<%= wall.id %>">
-                <li><span class="delete-wall"><em>&#10008;</em> </span></li>
-              </ul>
+
+            <ul data-id="<%= wall.id %>">
+              <li><span class="delete-wall"><em>&#10008;</em> </span></li>
+            </ul>
+
             </div>
           </div>
         <% end %>

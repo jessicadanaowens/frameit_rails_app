@@ -1,10 +1,59 @@
-<section id="room">
-<canvas style="background-image: url('<%=@picture.image.url %>');" id="canvas" width="400" height="400" ></canvas>
-<img id="canvasImg" alt="Right click to save me!">
+<div ng-app="wallSlider">
+  <div ng-controller="WallController">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.18/angular.min.js"></script>
 
-<img id ="hang-picture" src = '<%=@picture.image.url %>' width="100">
+    <section id="room">
+      <div id="gallery-of-walls">
 
-<!--<img id="wall" src = 'https://okl1-scene7.insnw.net/is/image/OKL/SalesEvent_41649_Logo_1?$story-hero$' width="400" >-->
-</section>
+        <img id="hang-picture" src='<%= @picture.image.url %>'  crossorigin="anonymous">
+        <img id="background-wall" ng-src="{{currentWall()}}" crossorigin="anonymous">
+
+
+      <canvas crossorigin="anonymous" id="canvas" width="400" height="400"></canvas>
+      </div>
+    </section>
+
+    <button ng-click="previousWall()">&larr;</button>
+    <button ng-click="nextWall()">&rarr;</button>
+    <button id="save-wall">Save</button>
+
+  </div>
+</div>
 
 <script> hangIt() </script>
+
+<script>
+  angular.module('wallSlider', [])
+    .controller('WallController', ['$scope', '$http', function ($scope, $http) {
+      $scope.walls = [];
+      $http.get('/hang_it.json').success(function (data) {
+        $scope.walls = data;
+      });
+
+      $scope.wallIndex = 0;
+
+      $scope.currentWall = "";
+
+      $scope.currentWall = function () {
+        if ($scope.walls.length > 0) {
+          return $scope.walls[$scope.wallIndex].image.url;
+        };
+      };
+
+      $scope.nextWall = function () {
+        if ($scope.wallIndex + 1 >= $scope.walls.length) {
+          $scope.wallIndex = 0;
+        } else {
+          $scope.wallIndex += 1;
+        }
+      };
+
+      $scope.previousWall = function () {
+        if ($scope.wallIndex - 1 < 0) {
+          $scope.wallIndex = $scope.walls.length - 1;
+        } else {
+          $scope.wallIndex -= 1;
+        }
+      };
+    }]);
+</script>

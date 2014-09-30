@@ -1,19 +1,27 @@
 var hangIt = function() {
 
-  var canvas = document.getElementById("canvas");
-    var context = canvas.getContext("2d");
-  $('#hang-picture').load(function(evt) {
-      context.drawImage(evt.currentTarget, 0, 0, 400, 400);
-  });
+//  $(function(){
+//    $("#hang-picture").resizable();
+//  });
 
   $(function(){
 
     var img = new Image();
+    img.crossOrigin = "Anonymous";
     img.onload = function(){
       ctx.drawImage(img, 0,0);
     };
 
+    var backgroundImg = new Image();
+    img.crossOrigin = "Anonymous";
+    img.onload = function(){
+      ctx.drawImage(img, 0,0);
+
+    };
+
+    backgroundImg.src = $('#background-wall').attr('src');
     img.src = $('#hang-picture').attr('src');
+
     var canvas=document.getElementById("canvas");
     var ctx=canvas.getContext("2d");
     var canvasOffset=$("#canvas").offset();
@@ -51,6 +59,7 @@ var hangIt = function() {
       if(isDragging){
         ctx.clearRect(0,0,canvasWidth,canvasHeight);
         ctx.drawImage(img,canMouseX-128/2,canMouseY-120/2,128,120);
+        ctx.drawImage(backgroundImg, canMouseX-128/2,canMouseY-120/2,128,120);
       }
     }
 
@@ -59,11 +68,18 @@ var hangIt = function() {
     $("#canvas").mouseup(function(e){handleMouseUp(e);});
     $("#canvas").mouseout(function(e){handleMouseOut(e);});
 
+    $('#save-wall').on('click', function () {
+      var dataURL = canvas.toDataURL();
+    });
+
+
     var dataURL = canvas.toDataURL();
 
 //    set canvasImg image src to dataURL
 //    so it can be saved as an image
-    document.getElementById('canvasImg').src = dataURL;
+
+    document.getElementById('canvas').src = dataURL;
+
 
   });
 };

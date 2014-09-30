@@ -2,7 +2,8 @@ class WallsController < ApplicationController
 
   def index
     @wall = Wall.new
-    @picture = Picture.find(params[:id])
+    @picture = Picture.find(params[:format])
+    @walls = current_user.walls
   end
 
   def create
@@ -14,7 +15,6 @@ class WallsController < ApplicationController
         session[:user_id]
       end
     end
-
 
     @wall = Wall.new(allowed_params)
     @wall[:user_id] = user_id

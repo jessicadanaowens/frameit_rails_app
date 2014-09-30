@@ -6,7 +6,8 @@ Rails.application.routes.draw do
   delete "sign_out" => "sessions#delete"
   post "/users/:source" => "users#create"
   post "/users" => "users#create"
-  get "hang_it/:id" => "walls#index", :as => "hang_it"
+  get "walls/:id" => "walls#index"
+  get "hang_it" => "hang_it#index"
 
   root to: "home#index"
 
