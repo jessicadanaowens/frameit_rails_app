@@ -44,7 +44,10 @@ feature "User can upload a photo" do
   scenario "User can delete a photo", :js => true do
     upload_picture
 
+    within(".cards") do
     find('span.delete-picture').click
     expect(page).to_not have_content "description"
+    end
+
   end
 end
