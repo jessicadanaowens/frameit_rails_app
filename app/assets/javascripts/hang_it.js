@@ -1,25 +1,24 @@
 var hangIt = function() {
 
-//  $(function(){
-//    $("#hang-picture").resizable();
-//  });
+  var img = new Image();
+  img.crossOrigin = "Anonymous";
+  img.onload = function(){
+    ctx.drawImage(img, 0, 0);
+    ctx.save();
+    canvas.add(ctx.getImageData(0,0, canvas.width, canvas.height));
+  };
 
-  $(function(){
-
-    var img = new Image();
-    img.crossOrigin = "Anonymous";
-    img.onload = function(){
-      ctx.drawImage(img, 0,0);
+  var background = new Image();
+  background.crossOrigin = "Anonymous";
+  background.onload = function(){
+      console.log("about to paint canvas");
+      ctx.drawImage(background, 0, 0);
+      ctx.save();
+      canvas.add(ctx.getImageData(0,0, canvas.width, canvas.height));
     };
 
-    var backgroundImg = new Image();
-    img.crossOrigin = "Anonymous";
-    img.onload = function(){
-      ctx.drawImage(img, 0,0);
 
-    };
-
-    backgroundImg.src = $('#background-wall').attr('src');
+    background.src = $('#background-wall').attr('src');
     img.src = $('#hang-picture').attr('src');
 
     var canvas=document.getElementById("canvas");
@@ -30,6 +29,8 @@ var hangIt = function() {
     var canvasWidth=canvas.width;
     var canvasHeight=canvas.height;
     var isDragging=false;
+
+    ctx.clearRect ( 0 , 0 , canvas.width , canvas.height );
 
     function handleMouseDown(e){
       canMouseX=parseInt(e.clientX-offsetX);
@@ -58,8 +59,8 @@ var hangIt = function() {
       // if the drag flag is set, clear the canvas and draw the image
       if(isDragging){
         ctx.clearRect(0,0,canvasWidth,canvasHeight);
+        ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
         ctx.drawImage(img,canMouseX-128/2,canMouseY-120/2,128,120);
-        ctx.drawImage(backgroundImg, canMouseX-128/2,canMouseY-120/2,128,120);
       }
     }
 
@@ -70,16 +71,17 @@ var hangIt = function() {
 
     $('#save-wall').on('click', function () {
       var dataURL = canvas.toDataURL();
+      debugger;
+      $.ajax({
+        type: "POST",
+        url: "/arrangements",
+        dataType: "json",
+        data: {url: dataURL},
+        success: function() {
+          console.log("success");
+        }
+      });
     });
-
-
-    var dataURL = canvas.toDataURL();
-
-//    set canvasImg image src to dataURL
-//    so it can be saved as an image
-
-    document.getElementById('canvas').src = dataURL;
-
-
-  });
 };
+
+//image slider doesn't work with

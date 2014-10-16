@@ -11,10 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140919150808) do
+ActiveRecord::Schema.define(version: 20140930214116) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "arrangements", force: true do |t|
+    t.integer "user_id"
+    t.text    "url"
+  end
 
   create_table "frame_size_joins", force: true do |t|
     t.string   "frame_id"
@@ -83,6 +88,11 @@ ActiveRecord::Schema.define(version: 20140919150808) do
     t.string  "first_name"
     t.string  "last_name"
     t.boolean "guest"
+  end
+
+  create_table "wall_ensembles", force: true do |t|
+    t.integer "user_id"
+    t.string  "url"
   end
 
   create_table "walls", force: true do |t|

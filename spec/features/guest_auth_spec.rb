@@ -22,7 +22,7 @@ feature 'visitor registers' do
     register(email: "ellen@gmail.com", password: "12345")
     click_on "Sign Out"
     click_on "Sign Up"
-    register(email: "blake@gmail.com", password: "12345")
+    register(email: "ellen@gmail.com", password: "12345")
     expect(page).to have_content("Email has already been taken")
   end
 end

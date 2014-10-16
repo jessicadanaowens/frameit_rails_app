@@ -15,6 +15,8 @@ Rails.application.routes.draw do
     resources :pictures, :except => [:update, :destroy]
   end
 
+  resources :arrangements
+
   resources :pictures, :only => [:update, :destroy]
 
   resources :frames
