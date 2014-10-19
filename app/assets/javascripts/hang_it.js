@@ -1,18 +1,29 @@
 var hangIt = function() {
 
+
+
   function drawImage(imageObj, backgroundImage) {
+
+    var wallHeight = parseInt($('.wall-height').text());
+    var pixelsPerInch = 400 / wallHeight;
+    var pictureWidth = parseInt($('.picture-width').text()) * pixelsPerInch;
+    var pictureHeight = parseInt($('.picture-height').text()) * pixelsPerInch;
+
     stage = new Kinetic.Stage({
     container: "container",
-    width: 600,
-    height: 600
+    width: 400,
+    height: 400
     });
     var layer = new Kinetic.Layer();
-
+    debugger;
     var hangPictureImg = new Kinetic.Image({
+
+
     image: imageObj,
     x: 100,
     y: 30,
-
+    width: pictureWidth,
+    height: pictureHeight,
     draggable: true
     });
 
@@ -20,7 +31,6 @@ var hangIt = function() {
       image: backgroundImage,
       x: 100,
       y: 30,
-
       draggable: false
     });
 
@@ -38,11 +48,7 @@ var hangIt = function() {
 
 
     document.getElementById('save-wall').addEventListener('click', function() {
-      /*
-       * since the stage toDataURL() method is asynchronous, we need
-       * to provide a callback
-       */
-      debugger;
+
       stage.toDataURL({
         callback: function(dataUrl) {
           $.ajax({

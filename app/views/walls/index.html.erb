@@ -1,4 +1,3 @@
-
 <div id="container"></div>
 <script src="http://d3lp1msu2r81bx.cloudfront.net/kjs/js/lib/kinetic-v5.0.2.min.js"></script>
 
@@ -6,25 +5,22 @@
 <div ng-app="wallSlider">
   <div ng-controller="WallController">
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.18/angular.min.js"></script>
+    <div class="hang-picture-container">
+      <img id="hang-picture" src='<%= @picture.image.url %>'  crossorigin="anonymous">
+      <p class="picture-height"><%=@picture.height%></p>
+      <p class="picture-width"><%=@picture.width%></p>
 
-    <section id="room">
-      <div id="gallery-of-walls">
-
-        <img id="hang-picture" src='<%= @picture.image.url %>'  crossorigin="anonymous">
-        <img id="background-wall" ng-src="{{currentWall()}}" crossorigin="anonymous">
-
-
-
-      </div>
-    </section>
+      <img id="background-wall" ng-src="{{currentWall()}}" crossorigin="anonymous">
+      <p class="wall-height">{{currentWallHeight()}}</p>
+    </div>
 
     <button ng-click="previousWall()">&larr;</button>
     <button ng-click="nextWall()">&rarr;</button>
     <button id="save-wall">Save</button>
-
   </div>
 </div>
 <div>
+
   <h1>Your Saved Arrangements</h1>
   <% @arrangements.each do |arrangement| %>
     <img src="<%=arrangement.url%>">
@@ -47,6 +43,12 @@
       $scope.currentWall = function () {
         if ($scope.walls.length > 0) {
           return $scope.walls[$scope.wallIndex].image.url;
+        };
+      };
+
+      $scope.currentWallHeight = function () {
+        if ($scope.walls.length > 0) {
+          return $scope.walls[$scope.wallIndex].height;
         };
       };
 
