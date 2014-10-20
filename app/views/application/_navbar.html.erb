@@ -1,8 +1,9 @@
 <header class="navigation">
   <div class="navigation-wrapper">
-    <a href="/" class="logo">
-      <%= image_tag("frame-it.png")%>
+    <a href="/">
+      <h1 class="logo">frame-it</h1>
     </a>
+
     <a href="" class="navigation-menu-button" id="js-mobile-menu">MENU</a>
     <div class="nav">
       <ul id="navigation-menu">
@@ -13,8 +14,8 @@
             <li class="nav-link"><%= link_to "Sign In", sign_in_path %></li>
           <% else %>
             <li class="nav-link"><%= link_to "Sell Frames", frames_path %></li>
-            <li class="nav-link"><%= link_to "Your Gallery", user_pictures_path(current_user) %></li>
-            <li class="nav-link">Signed in as <%=current_user.email %></li>
+            <li class="nav-link "><%= link_to "Your Gallery", user_pictures_path(current_user) %></li>
+            <li class="nav-link "><%= link_to "Signed in as #{current_user.email}" %></li>
             <li class="nav-link"><%= link_to "Sign Out", sign_out_path, method: :delete %></li>
           <% end %>
         <% else %>
@@ -24,9 +25,7 @@
       </ul>
     </div>
   </div>
-  <div id="scalloped-edge">
-  <span class="scalloped-edge"><%= image_tag "ScallopedBorder2.png" %></span>
-  </div>
+
 </header>
 
 

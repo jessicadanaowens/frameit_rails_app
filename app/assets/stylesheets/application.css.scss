@@ -12,9 +12,76 @@
 @import "sign_in";
 @import "sign_up";
 @import "alert";
-@import "welcome_picture";
 @import "wrapper";
 @import "frame_table";
+@import "hang_it";
+
+button {
+  color: black;
+}
+.searchfield {
+  margin: auto;
+}
+
+.twitter-typehead {
+  display: inline;
+
+}
+
+.hr-line {
+  @include media(min-width 500px) {
+    padding-top: 60%;
+  }
+
+  @include media(max-width 200px) {
+    padding-top: 0px;
+  }
+}
+
+header.navigation ul li.nav-link.signed-in-link a{
+  color: pink;
+}
+
+input[type="submit"] {
+  background-color: pink;
+  color: black;
+}
+
+label {
+  color: #a25d8f;
+}
+
+.logo {
+  color: pink;
+  padding-top: 30px;
+}
+
+header.navigation .navigation-menu-button {
+  font-family: Courier,monospace;
+}
+.title-tag {
+  text-align: center;
+  padding: 50px;
+}
+hr {
+  display: block;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  margin-left: auto;
+  margin-right: auto;
+  border-style: inset;
+  border-width: 1px;
+}
+
+body {
+  font-family: Courier,monospace;
+  background-color: whitesmoke;
+}
+
+h1, h2, h3, h4, h5, p, label {
+  font-family: Courier,monospace;
+  color: black;
+}
 
 .nothing-created_message {
 
@@ -29,13 +96,15 @@ header.navigation .nav {
 }
 
 .picture-description {
-  color: #a25d8f;
+  color: #333333;
 }
+
 .frame-button {
   margin: auto;
   width: 100%;
   text-align: center;
 }
+
 section.work-table {
 width: 100%;
 height: 300px;
@@ -74,59 +143,6 @@ section.work-table img {
   margin: auto;
 }
 
-#top-piece {
-  z-index: 1;
-  width: 200px;
-  height: 20px;
-  position:absolute;
-  top: 0px;
-  right: 0px;
-}
-
-#right-piece {
-  width: 200px;
-  height: 20px;
-  margin-top: 0px;
-  -webkit-transform: rotate(90deg);
-  -moz-transform: rotate(90deg);
-  -o-transform: rotate(90deg);
-  -ms-transform: rotate(90deg);
-  transform: rotate(90deg);
-  position: absolute;
-  right: -47px;
-  bottom: 50px;
-}
-
-#left-piece {
-  z-index: 0;
-  width: 200px;
-  height: 20px;
-  margin-top: 0px;
-  -webkit-transform: rotate(-90deg);
-  -moz-transform: rotate(-90deg);
-  -o-transform: rotate(-90deg);
-  -ms-transform: rotate(-90deg);
-  transform: rotate(-90deg);
-  position: absolute;
-  left: -47px;
-  bottom: 50px;
-}
-
-#bottom-piece {
-  z-index: 1;
-  width: 200px;
-  height: 20px;
-  margin-top: 0px;
-  -moz-transform: scaleY(-1);
-  -o-transform: scaleY(-1);
-  -webkit-transform: scaleY(-1);
-  transform: scaleY(-1);
-  filter: FlipV;
-  -ms-filter: "FlipV";
-  position: absolute;
-  bottom: 0px;
-  right: 0px;
-}
 
 #hang-picture {
   visibility: hidden;
@@ -149,17 +165,11 @@ div.container {
 
 .scalloped-edge {
   width: 100%;
-
-
 }
 
 body {
-  background-color: #d0c2cc;
+  background-color: white;
   color: #a25d8f;
-}
-
-input[type="submit"] {
-  background-color: #a25d8f;
 }
 
 .nav-link {

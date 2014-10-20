@@ -1,10 +1,12 @@
+<h4 class="hang-it-instructions">Drag your art on top of the wall until you like the arrangement. Click save.</h4>
 <div id="container"></div>
 <script src="http://d3lp1msu2r81bx.cloudfront.net/kjs/js/lib/kinetic-v5.0.2.min.js"></script>
 
 
-<div ng-app="wallSlider">
+<div ng-app="wallSlider" class="wallSlider">
   <div ng-controller="WallController">
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.18/angular.min.js"></script>
+
     <div class="hang-picture-container">
       <img id="hang-picture" src='<%= @picture.image.url %>'  crossorigin="anonymous">
       <p class="picture-height"><%=@picture.height%></p>
@@ -19,9 +21,14 @@
     <button id="save-wall">Save</button>
   </div>
 </div>
-<div>
+<br>
+<br>
+<hr>
 
-  <h1>Your Saved Arrangements</h1>
+
+
+<div>
+  <h1 class="title-tag">Your Saved Arrangements</h1>
   <% @arrangements.each do |arrangement| %>
     <img src="<%=arrangement.url%>">
   <% end %>

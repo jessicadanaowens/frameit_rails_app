@@ -38,7 +38,7 @@ end
 def upload_picture
   visit "/"
 
-  click_on "Upload a picture to frame"
+  click_on "Visualize your art in different spaces.  Frame-it, stage-it & share-it."
   click_on "Select a picture to frame"
   within('#upload-picture-form') do
     fill_in "picture[description]", :with => "description"

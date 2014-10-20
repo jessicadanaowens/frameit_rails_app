@@ -2,6 +2,10 @@
   @include clearfix;
 }
 
+.card-header {
+  color: black;
+}
+
 .card {
   $card-border-color: $base-border-color;
   $card-border: 1px solid $card-border-color;
@@ -85,7 +89,7 @@
 
     ul li {
       display: inline;
-      color: $card-stats-color;
+      color: black;
       font-weight: 800;
       font-size: 1.2em;
       float: left;

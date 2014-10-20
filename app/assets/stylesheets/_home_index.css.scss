@@ -1,78 +1,111 @@
 section.enter {
-  @include span-columns(12);
-  margin-top: 75px;
-  margin-bottom: 30px;
-  color: #50378e;
-  text-align: center;
+  @include media(min-width 769px) {
+    @include span-columns(12);
+    height: 500px;
+  }
+  @include media(max-width 320px) {
+    height: 450px;
+  }
+  @include media(max-width 200px) {
+    height: 300px;
+  }
+}
 
-  article.enter-button {
-    @include span-columns(6 of 12);
-    @include shift(3);
-    @include media(769px) {
-      @include span-columns(6 of 12);
-    }
-    @include media(max-width 320px) {
-      @include span-columns(12);
-      @include shift(0);
-    }
+.vector-frame {
+  @include media(min-width 760px) {
+
+    position: absolute;
+    top: 100px;
+    margin: auto;
+    right: 50px;
+    left: 50px;
+  }
+  @include media(max-width 200px) {
   }
 }
-.enter {
-  padding: 50px;
-}
+
 .homepage-link {
-  a {
-    color: white;
+  @include media(min-width 760px) {
+    position: absolute;
+    width: 350px;
+    top: 235px;
+    margin: auto;
+    right: 50px;
+    left: 50px;
+    font-size: 1.5em;
+    padding-top: 70px;
+    padding-bottom: 70px;
   }
-  background-color: #a25d8f;
-  border-radius: 0.1875em;
+  @include media(max-width 200px) {
+    position: absolute;
+    width: 50px;
+    top: 0px;
+    margin: auto;
+    right: 50px;
+    left: 50px;
+    font-size: 1.5em;
+  }
+
+  a {
+    color: black;
+  }
+
+  background-color: pink;
+  border-radius: .7em;
   color: white;
   display: inline-block;
   font-size: 1em;
   font-weight: bold;
-  line-height: 1;
+  line-height: 1.0;
   padding: .75em 1em;
   text-decoration: none;
 
-  link:hover {
+  a:hover {
     background-color: #714164;
     color: white;
   }
 }
+
 .three-columns {
   @include span-columns(12);
 
   .three-column-one {
     @include media(min-width 769px) {
       @include span-columns(4 of 12);
+      width: 28%;
+      margin-right: 8%;
       .card-on-homepage {
         @include span-columns(12 of 12);
       }
     }
     @include media(max-width 200px) {
-      @include span-columns(12);
+      @include span-columns(6 of 12);
     }
   }
   .three-column-two {
     @include media(min-width 769px) {
       @include span-columns(4 of 12);
+      width: 28%;
+      margin-right: 8%;
       .card-on-homepage {
         @include span-columns(12 of 12);
       }
     }
     @include media(max-width 200px) {
-      @include span-columns(12);
+      @include span-columns(6 of 12);
     }
   }
   .three-column-three {
     @include media(min-width 769px) {
       @include span-columns(4 of 12);
+      width: 28%;
+      margin-right: 8%;
       .card-on-homepage {
         @include span-columns(12 of 12);
       }
     }
     @include media(max-width 200px) {
-      @include span-columns(12);
+      @include span-columns(6 of 12);
     }
   }
 }

@@ -26,13 +26,13 @@ $light-green: #E6EFC2;
 $base-background-color: white;
 
 // Font Colors
-$base-font-color: $dark-gray;
-$base-accent-color: $blue;
+$base-font-color: black;
+$base-accent-color: black;
 
 // Link Colors
-$base-link-color: $mauve;
-$hover-link-color: darken($mauve, 15);
-$base-button-color: $base-link-color;
+$base-link-color: darken(pink, 15);
+$hover-link-color: darken($base-link-color, 15);
+$base-button-color: pink;
 $hover-button-color: $hover-link-color;
 
 // Border color
