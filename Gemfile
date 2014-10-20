@@ -38,4 +38,8 @@ gem 'rails_12factor'
 gem 'pry-byebug'
 gem 'pry-rails'
 
+group :production do
+gem 'pg'
+end
+
 
