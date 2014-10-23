@@ -7,7 +7,7 @@
       <div class="homepage-link"><%= link_to "Visualize your art in different spaces.  Frame-it, stage-it & share-it.", user_pictures_path(current_user) %></div>
     <% else %>
       <img src="/assets/vector-frame.png" class="vector-frame">
-      <div class="homepage-link"><%= button_to "Visualize your art in different spaces.  Frame-it, stage-it & share-it.", create_guest_path, method: :post %></div>
+      <div class="signed-out-homepage-link"><%= button_to "Visualize your art in different spaces.  Frame-it, stage-it & share-it.", create_guest_path, method: :post, :class => "normal-white-space" %></div>
     <% end %>
   </article>
 </section>

@@ -1,15 +1,22 @@
-section.enter {
-  @include media(min-width 769px) {
-    @include span-columns(12);
-    height: 500px;
-  }
-  @include media(max-width 320px) {
-    height: 450px;
-  }
-  @include media(max-width 200px) {
-    height: 300px;
-  }
+.normal-white-space {
+  white-space: normal;
+  text-align: left;
 }
+
+.signed-out-homepage-link {
+  position: absolute;
+  width: 350px;
+  top: 235px;
+  margin: auto;
+  right: 50px;
+  left: 50px;
+  font-size: 1.5em;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  white-space: normal;
+}
+
+
 
 .vector-frame {
   @include media(min-width 760px) {
@@ -35,7 +42,9 @@ section.enter {
     font-size: 1.5em;
     padding-top: 70px;
     padding-bottom: 70px;
+    white-space: normal;
   }
+
   @include media(max-width 200px) {
     position: absolute;
     width: 50px;

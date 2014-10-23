@@ -16,6 +16,9 @@
 @import "frame_table";
 @import "hang_it";
 
+button, input[type="submit"] {
+  white-space: normal;
+}
 
 button {
   color: black;
@@ -31,7 +34,7 @@ button {
 
 .hr-line {
   @include media(min-width 500px) {
-    padding-top: 60%;
+    padding-top: 500px;
   }
 
   @include media(max-width 200px) {
@@ -79,7 +82,7 @@ body {
   background-color: whitesmoke;
 }
 
-h1, h2, h3, h4, h5, p, label {
+h1, h2, h3, h4, h5, p, label, input {
   font-family: Courier,monospace;
   color: black;
 }
@@ -157,15 +160,6 @@ img.frame {
 
 div.container {
   @include outer-container;
-}
-
-#scalloped-edge {
-  width: 100%;
-  overflow: hidden;
-}
-
-.scalloped-edge {
-  width: 100%;
 }
 
 body {
