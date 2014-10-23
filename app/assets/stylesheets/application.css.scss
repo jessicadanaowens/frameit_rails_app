@@ -16,66 +16,6 @@
 @import "frame_table";
 @import "hang_it";
 
-button, input[type="submit"] {
-  white-space: normal;
-}
-
-button {
-  color: black;
-}
-.searchfield {
-  margin: auto;
-}
-
-.twitter-typehead {
-  display: inline;
-
-}
-
-.hr-line {
-  @include media(min-width 500px) {
-    padding-top: 500px;
-  }
-
-  @include media(max-width 200px) {
-    padding-top: 0px;
-  }
-}
-
-header.navigation ul li.nav-link.signed-in-link a{
-  color: pink;
-}
-
-input[type="submit"] {
-  background-color: pink;
-  color: black;
-}
-
-label {
-  color: #a25d8f;
-}
-
-.logo {
-  color: pink;
-  padding-top: 30px;
-}
-
-header.navigation .navigation-menu-button {
-  font-family: Courier,monospace;
-}
-.title-tag {
-  text-align: center;
-  padding: 50px;
-}
-hr {
-  display: block;
-  margin-top: 0.5em;
-  margin-bottom: 0.5em;
-  margin-left: auto;
-  margin-right: auto;
-  border-style: inset;
-  border-width: 1px;
-}
 
 body {
   font-family: Courier,monospace;
@@ -86,6 +26,44 @@ h1, h2, h3, h4, h5, p, label, input {
   font-family: Courier,monospace;
   color: black;
 }
+
+button, input[type="submit"] {
+  white-space: normal;
+  color: black;
+}
+
+header.navigation ul li.nav-link.signed-in-link a{
+  color: pink;
+}
+
+input[type="submit"] {
+  color: black;
+}
+
+.logo {
+  color: pink;
+  padding-top: 30px;
+}
+
+header.navigation .navigation-menu-button {
+  font-family: Courier,monospace;
+}
+
+.title-tag {
+  text-align: center;
+  padding: 50px;
+}
+
+hr {
+  display: block;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  margin-left: auto;
+  margin-right: auto;
+  border-style: inset;
+  border-width: 1px;
+}
+
 
 .nothing-created_message {
 
@@ -194,17 +172,6 @@ body {
 
 body {
   color: #dc7700;
-}
-
-.sign-in-form {
-  @include span-columns(3);
-  color: #a25d8f;
-
-}
-
-.sign-up-form {
-  @include span-columns(3);
-  color: #a25d8f;
 }
 
 

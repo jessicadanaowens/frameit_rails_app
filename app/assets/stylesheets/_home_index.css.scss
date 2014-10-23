@@ -1,6 +1,11 @@
-.normal-white-space {
-  white-space: normal;
-  text-align: left;
+.hr-line {
+  @include media(min-width 500px) {
+    padding-top: 500px;
+  }
+
+  @include media(max-width 200px) {
+    padding-top: 0px;
+  }
 }
 
 .signed-out-homepage-link {
@@ -11,12 +16,10 @@
   right: 50px;
   left: 50px;
   font-size: 1.5em;
-  padding-top: 40px;
-  padding-bottom: 40px;
+  padding-top: 60px;
+  padding-bottom: 60px;
   white-space: normal;
 }
-
-
 
 .vector-frame {
   @include media(min-width 760px) {
@@ -59,7 +62,7 @@
     color: black;
   }
 
-  background-color: pink;
+
   border-radius: .7em;
   color: white;
   display: inline-block;
