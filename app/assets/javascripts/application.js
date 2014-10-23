@@ -31,8 +31,6 @@ $(document).ready(function () {
 
   accordian();
 
-  //hide and show picture form and wall form
-
   forms();
 
   var menu = $('#navigation-menu');
