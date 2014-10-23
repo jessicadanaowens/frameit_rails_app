@@ -1,0 +1,16 @@
+<ul class="accordion-tabs">
+  <li class="tab-header-and-content">
+    <a href="#" class="is-active tab-link">Arrangements</a>
+    <div class="tab-content is-open">
+      <div class="cards">
+        <% current_user.arrangements.each do |arrangement| %>
+          <div class="card" data-id="<%= arrangement.id %>">
+            <div class="card-image">
+              <img src="<%= arrangement.url %>" alt="">
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </li>
+</ul>

@@ -4,7 +4,6 @@ class WallsController < ApplicationController
     @wall = Wall.new
     @picture = Picture.find(params[:format])
     @walls = current_user.walls
-    @arrangements = Arrangement.all
   end
 
   def create

@@ -1,0 +1,17 @@
+<div ng-app="wallSlider" class="wallSlider">
+  <div ng-controller="WallController">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.18/angular.min.js"></script>
+
+    <div class="hang-picture-container">
+      <img id="hang-picture" src='<%= @picture.image.url %>' crossorigin="anonymous">
+      <p class="picture-height"><%= @picture.height %></p>
+      <p class="picture-width"><%= @picture.width %></p>
+      <img id="background-wall" ng-src="{{currentWall()}}" crossorigin="anonymous">
+      <p class="wall-height">{{currentWallHeight()}}</p>
+    </div>
+
+    <button ng-click="previousWall()">&larr;</button>
+    <button ng-click="nextWall()">&rarr;</button>
+    <button id="save-wall">Save</button>
+  </div>
+</div>
