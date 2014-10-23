@@ -1,6 +1,5 @@
-<ul class="accordion-tabs">
-  <li class="tab-header-and-content">
-    <a href="#" class="is-active tab-link">Arrangements</a>
+
+    <a href="#" class="tab-link">Arrangements</a>
     <div class="tab-content is-open">
       <div class="cards">
         <% current_user.arrangements.each do |arrangement| %>
@@ -8,9 +7,12 @@
             <div class="card-image">
               <img src="<%= arrangement.url %>" alt="">
             </div>
+            <div class="card-stats">
+              <ul data-id="<%= arrangement.id %>">
+                <li><span class="delete-arrangement"><em>&#10008;</em> </span></li>
+              </ul>
+            </div>
           </div>
         <% end %>
       </div>
     </div>
-  </li>
-</ul>

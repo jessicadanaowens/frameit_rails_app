@@ -27,6 +27,8 @@ $(document).ready(function () {
 
   editPictureDescription();
 
+  deleteArrangement();
+
   //hide and show picture form and wall form
 
   forms();
