@@ -12,6 +12,8 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require lightbox.min
+//= require kinetic-v5.1.0.min
 
 //= require_tree .
 

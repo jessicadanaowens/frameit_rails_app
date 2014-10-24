@@ -18,7 +18,6 @@ var hangIt = function() {
     var layer = new Kinetic.Layer();
     var hangPictureImg = new Kinetic.Image({
 
-
     image: imageObj,
     x: 0,
     y: 0,
