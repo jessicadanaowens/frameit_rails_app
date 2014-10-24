@@ -5,7 +5,9 @@
 
     <section class="work-table" >
 
-      <div><%= image_tag @picture.image.url, :class =>"picture" %></div>
+      <div style="overflow: hidden; position: absolute; margin-right: -50%; top: 50%; left: 50%; width: 400px; transform: translate(-50%, -50%); height: 300px">
+        <%= image_tag @picture.image.url, :class =>"picture" %>
+      </div>
       <%= image_tag "", {class: "frames", "ng-src"=> "{{currentImage()}}"}%>
 
     </section>
@@ -50,16 +52,36 @@
         }
       };
 
-      $scope.frameHeight = function() {
+      $scope.frameWidth = function() {
         if ($scope.frames.length > 0) {
-          return $scope.frames[$scope.frameIndex].inner_height;
+          return parseInt($scope.frames[$scope.frameIndex].inner_width);
+        }
+        else {
+          return 1
         }
       };
 
-      $scope.frameWidth = function() {
+      $scope.frameHeight = function() {
         if ($scope.frames.length > 0) {
-          debugger;
-          return $scope.frames[$scope.frameIndex].inner_width;
+          return parseInt($scope.frames[$scope.frameIndex].inner_height);
+        }
+        else {
+          return 1
+        }
+      };
+
+      $scope.pixelsPerInch = function() {
+        if ($scope.frames.length > 0) {
+          return 400 / $scope.frameWidth();
+        }
+      };
+
+      $scope.frameHeightPixels = function() {
+        if ($scope.frames.length > 0) {
+          return $scope.pixelsPerInch() * $scope.frameHeight();
+        }
+        else {
+          return 1
         }
       };
 
